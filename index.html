@@ -2,359 +2,359 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <!-- Makes the page scale correctly on ALL screen sizes -->
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Dehinbo Titus | Frontend Developer</title>
+<meta charset="UTF-8">
+<!-- Makes the page scale correctly on ALL screen sizes -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dehinbo Titus | Frontend Developer</title>
 
-  
-  <style>
-    /* ===== RESET ===== */
-    * {
-      padding: 0;
-      margin: 0;
-      box-sizing: border-box;
-    }
 
-    /* ===== BODY — YOUR ORIGINAL BACKGROUND RESTORED ===== */
-    body {
-      background: url("back2.png");
-      width: 100%;
-      min-height: 100vh;
-      overflow-x: hidden;
-      font-family: 'Raleway', sans-serif;
-      color: #fff;
-    }
+<style>
+/* ===== RESET ===== */
+* {
+padding: 0;
+margin: 0;
+box-sizing: border-box;
+}
 
-    /* ===== NAVIGATION ===== */
-    nav {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 16px 24px;
-      border-bottom: 1px solid #222;
-      flex-wrap: wrap;
-      /* Wraps on tiny screens */
-      gap: 10px;
-    }
+/* ===== BODY — YOUR ORIGINAL BACKGROUND RESTORED ===== */
+body {
+background: url("back2.png");
+width: 100%;
+min-height: 100vh;
+overflow-x: hidden;
+font-family: 'Raleway', sans-serif;
+color: #fff;
+}
 
-    /* ===== LOGO BADGE ===== */
-    .hero {
-      color: white;
-      border: 1px dashed green;
-      border-radius: 10px;
-      padding: 8px 16px;
-      background-color: black;
-      font-weight: 700;
-      white-space: nowrap;
-    }
+/* ===== NAVIGATION ===== */
+nav {
+display: flex;
+justify-content: space-between;
+align-items: center;
+padding: 16px 24px;
+border-bottom: 1px solid #222;
+flex-wrap: wrap;
+/* Wraps on tiny screens */
+gap: 10px;
+}
 
-    /* ===== NAV LINKS ===== */
-    .nav-links {
-      display: flex;
-      gap: 16px;
-      list-style: none;
-      flex-wrap: wrap;
-    }
+/* ===== LOGO BADGE ===== */
+.hero {
+color: white;
+border: 1px dashed green;
+border-radius: 10px;
+padding: 8px 16px;
+background-color: black;
+font-weight: 700;
+white-space: nowrap;
+}
 
-    .nav-links a {
-      color: white;
-      text-decoration: none;
-      transition: all 0.3s ease;
-    }
+/* ===== NAV LINKS ===== */
+.nav-links {
+display: flex;
+gap: 16px;
+list-style: none;
+flex-wrap: wrap;
+}
 
-    .nav-links a:hover {
-      opacity: 0.6;
-      color: rgb(14, 199, 60);
-      border: 1px solid white;
-      border-radius: 2px;
-    }
+.nav-links a {
+color: white;
+text-decoration: none;
+transition: all 0.3s ease;
+}
 
-    /* ===== GREEN DIVIDER LINE ===== */
-    .line {
-      border: 2px solid green;
-      border-radius: 3px;
-      width: 100%;
-    }
+.nav-links a:hover {
+opacity: 0.6;
+color: rgb(14, 199, 60);
+border: 1px solid white;
+border-radius: 2px;
+}
 
-    /* ===== INTRO WRAPPER ===== */
-    .intro-wrapper {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin: 40px 10px 10px 10px;
-      padding: 10px;
-      gap: 20px;
-      flex-wrap: wrap;
-      /* Stacks on small screens */
-    }
+/* ===== GREEN DIVIDER LINE ===== */
+.line {
+border: 2px solid green;
+border-radius: 3px;
+width: 100%;
+}
 
-    /* ===== INTRO TEXT ===== */
-    .intro {
-      display: flex;
-      flex-direction: column;
-      border-left: 4px solid green;
-      padding-left: 20px;
-      flex: 1;
-      min-width: 0;
-      /* Allows it to shrink properly on mobile */
-    }
+/* ===== INTRO WRAPPER ===== */
+.intro-wrapper {
+display: flex;
+justify-content: space-between;
+align-items: center;
+margin: 40px 10px 10px 10px;
+padding: 10px;
+gap: 20px;
+flex-wrap: wrap;
+/* Stacks on small screens */
+}
 
-    /* ===== BIG "Hi," TEXT ===== */
-    .intro p {
-      color: green;
-      font-size: clamp(32px, 10vw, 60px);
-      /* Scales smoothly on all screens */
-      font-weight: bolder;
-      margin: 10px;
-    }
+/* ===== INTRO TEXT ===== */
+.intro {
+display: flex;
+flex-direction: column;
+border-left: 4px solid green;
+padding-left: 20px;
+flex: 1;
+min-width: 0;
+/* Allows it to shrink properly on mobile */
+}
 
-    /* ===== YOUR NAME ===== */
-    .name {
-      margin: 10px;
-      font-size: clamp(14px, 4vw, 20px);
-      font-weight: bolder;
-    }
+/* ===== BIG "Hi," TEXT ===== */
+.intro p {
+color: green;
+font-size: clamp(32px, 10vw, 60px);
+/* Scales smoothly on all screens */
+font-weight: bolder;
+margin: 10px;
+}
 
-    /* ===== TAGLINE ===== */
-    .intro span {
-      color: rgb(6, 109, 15);
-      font-size: clamp(11px, 3vw, 15px);
-      margin: 10px;
-      font-weight: bolder;
-      font-style: italic;
-      line-height: 1.6;
-    }
+/* ===== YOUR NAME ===== */
+.name {
+margin: 10px;
+font-size: clamp(14px, 4vw, 20px);
+font-weight: bolder;
+}
 
-    /* ===== PROFILE IMAGE ===== */
-    .profile-img {
-      width: clamp(100px, 20vw, 200px);
-      /* Shrinks on small phones */
-      height: clamp(100px, 20vw, 200px);
-      object-fit: cover;
-      margin-right: clamp(0px, 5vw, 100px);
-      flex-shrink: 0;
-    }
+/* ===== TAGLINE ===== */
+.intro span {
+color: rgb(6, 109, 15);
+font-size: clamp(11px, 3vw, 15px);
+margin: 10px;
+font-weight: bolder;
+font-style: italic;
+line-height: 1.6;
+}
 
-    /* ===== ABOUT ME SECTION ===== */
-    .about {
-      background-color: black;
-      margin: 10px;
-      margin-top: 30px;
-      padding: 20px;
-      border-left: 4px solid green;
-    }
+/* ===== PROFILE IMAGE ===== */
+.profile-img {
+width: clamp(100px, 20vw, 200px);
+/* Shrinks on small phones */
+height: clamp(100px, 20vw, 200px);
+object-fit: cover;
+margin-right: clamp(0px, 5vw, 100px);
+flex-shrink: 0;
+}
 
-    .about h2 {
-      color: white;
-      margin-bottom: 10px;
-    }
+/* ===== ABOUT ME SECTION ===== */
+.about {
+background-color: black;
+margin: 10px;
+margin-top: 30px;
+padding: 20px;
+border-left: 4px solid green;
+}
 
-    .about p {
-      margin: 10px;
-      margin-bottom: 10px;
-      color: green;
-      line-height: 1.6;
-    }
+.about h2 {
+color: white;
+margin-bottom: 10px;
+}
 
-    /* ===== SKILLS SECTION ===== */
-    .skill {
-      background: url("back.png");
-      border-left: 4px solid green;
-      padding: 20px;
-      margin: 10px;
-      margin-top: 30px;
-    }
+.about p {
+margin: 10px;
+margin-bottom: 10px;
+color: green;
+line-height: 1.6;
+}
 
-    .skill h1 {
-      color: green;
-      font-size: 14px;
-      letter-spacing: 4px;
-    }
+/* ===== SKILLS SECTION ===== */
+.skill {
+background: url("back.png");
+border-left: 4px solid green;
+padding: 20px;
+margin: 10px;
+margin-top: 30px;
+}
 
-    .skill ul {
-      list-style: none;
-      margin-top: 20px;
-    }
+.skill h1 {
+color: green;
+font-size: 14px;
+letter-spacing: 4px;
+}
 
-    /* ===== EACH SKILL ITEM ===== */
-    .skill li {
-      padding: 10px 16px;
-      border: 1px solid #222;
-      margin-bottom: 8px;
-      color: white;
-      font-size: clamp(14px, 3vw, 18px);
-      font-weight: bolder;
-      border-radius: 4px;
-      transition: all 0.3s ease;
-    }
+.skill ul {
+list-style: none;
+margin-top: 20px;
+}
 
-    .skill li::before {
-      content: "▹ ";
-      color: green;
-    }
+/* ===== EACH SKILL ITEM ===== */
+.skill li {
+padding: 10px 16px;
+border: 1px solid #222;
+margin-bottom: 8px;
+color: white;
+font-size: clamp(14px, 3vw, 18px);
+font-weight: bolder;
+border-radius: 4px;
+transition: all 0.3s ease;
+}
 
-    .skill li:hover {
-      border-color: green;
-      color: green;
-      cursor: default;
-    }
+.skill li::before {
+content: "▹ ";
+color: green;
+}
 
-    /* ===== PROJECTS SECTION ===== */
-    .projects {
-      background-color: rgb(6, 19, 77);
-      border-left: 4px solid green;
-      margin: 10px;
-      padding: 20px;
-      margin-top: 40px;
-    }
+.skill li:hover {
+border-color: green;
+color: green;
+cursor: default;
+}
 
-    .projects h2 {
-      color: green;
-      font-family: Georgia, 'Times New Roman', Times, serif;
-      margin-bottom: 10px;
-    }
+/* ===== PROJECTS SECTION ===== */
+.projects {
+background-color: rgb(6, 19, 77);
+border-left: 4px solid green;
+margin: 10px;
+padding: 20px;
+margin-top: 40px;
+}
 
-    .projects ul {
-      margin: 10px;
-      list-style-type: none;
-    }
+.projects h2 {
+color: green;
+font-family: Georgia, 'Times New Roman', Times, serif;
+margin-bottom: 10px;
+}
 
-    /* ===== EACH PROJECT ITEM ===== */
-    .projects li {
-      margin: 10px 0;
-      padding: 10px;
-      border: 2px solid green;
-      border-radius: 5px;
-      transition: all 0.3s ease;
-      font-size: clamp(13px, 2.5vw, 16px);
-      line-height: 1.5;
-      word-break: break-word;
-      /* Stops text overflowing on tiny screens */
-    }
+.projects ul {
+margin: 10px;
+list-style-type: none;
+}
 
-    .projects li::before {
-      content: "$ ";
-      color: green;
-    }
+/* ===== EACH PROJECT ITEM ===== */
+.projects li {
+margin: 10px 0;
+padding: 10px;
+border: 2px solid green;
+border-radius: 5px;
+transition: all 0.3s ease;
+font-size: clamp(13px, 2.5vw, 16px);
+line-height: 1.5;
+word-break: break-word;
+/* Stops text overflowing on tiny screens */
+}
 
-    /* ===== FOOTER ===== */
-    footer {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding: 20px;
-      margin-top: 30px;
-      text-align: center;
-    }
+.projects li::before {
+content: "$ ";
+color: green;
+}
 
-    footer h2 {
-      color: rgb(94, 75, 75);
-      margin-bottom: 10px;
-    }
+/* ===== FOOTER ===== */
+footer {
+display: flex;
+flex-direction: column;
+align-items: center;
+padding: 20px;
+margin-top: 30px;
+text-align: center;
+}
 
-    footer a {
-      color: green;
-      text-decoration: none;
-      word-break: break-word;
-      /* Stops long email overflowing */
-      text-align: center;
-    }
+footer h2 {
+color: rgb(94, 75, 75);
+margin-bottom: 10px;
+}
 
-    footer a:hover {
-      color: red;
-    }
+footer a {
+color: green;
+text-decoration: none;
+word-break: break-word;
+/* Stops long email overflowing */
+text-align: center;
+}
 
-    /* ===== SMALL PHONES (under 480px) ===== */
-    @media (max-width: 480px) {
+footer a:hover {
+color: red;
+}
 
-      /* Stack intro text and image vertically */
-      .intro-wrapper {
-        flex-direction: column;
-        align-items: flex-start;
-      }
+/* ===== SMALL PHONES (under 480px) ===== */
+@media (max-width: 480px) {
 
-      /* Center image below the text */
-      .profile-img {
-        margin-right: 0;
-        align-self: center;
-      }
+/* Stack intro text and image vertically */
+.intro-wrapper {
+flex-direction: column;
+align-items: flex-start;
+}
 
-      /* Center nav items on small phones */
-      nav {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-    }
-  </style>
+/* Center image below the text */
+.profile-img {
+margin-right: 0;
+align-self: center;
+}
+
+/* Center nav items on small phones */
+nav {
+flex-direction: column;
+align-items: flex-start;
+}
+}
+</style>
 </head>
 
 <body>
 
-  <!-- NAVIGATION BAR -->
-  <nav>
-    <div class="hero">Dehinbo Titus</div>
-    <ul class="nav-links">
-      <li><a href="#">Home</a></li>
-      <li><a href="#">About</a></li>
-      <li><a href="#">Contact</a></li>
-    </ul>
-  </nav>
+<!-- NAVIGATION BAR -->
+<nav>
+<div class="hero">Dehinbo Titus</div>
+<ul class="nav-links">
+<li><a href="#">Home</a></li>
+<li><a href="#">About</a></li>
+<li><a href="#">Contact</a></li>
+</ul>
+</nav>
 
-  <!-- GREEN DIVIDER LINE -->
-  <div class="line"></div>
+<!-- GREEN DIVIDER LINE -->
+<div class="line"></div>
 
-  <!-- INTRO SECTION: text + image -->
-  <div class="intro-wrapper">
-    <div class="intro">
-      <p>Hi,</p>
-      <div class="name">I'm Dehinbo Titus.</div>
-      <span>I enjoy turning ideas into interactive websites and continuously improving my skills in web
-        development.</span>
-    </div>
-    <img class="profile-img" src="remove.png" alt="profile image">
-  </div>
+<!-- INTRO SECTION: text + image -->
+<div class="intro-wrapper">
+<div class="intro">
+<p>Hi,</p>
+<div class="name">I'm Dehinbo Titus.</div>
+<span>I enjoy turning ideas into interactive websites and continuously improving my skills in web
+development.</span>
+</div>
+<img class="profile-img" src="remove.png" alt="profile image">
+</div>
 
-  <!-- ABOUT ME SECTION -->
-  <section>
-    <div class="about">
-      <h2>About Me</h2>
-      <p>
-        I am a frontend developer learning how to build modern and responsive websites
-        using HTML, CSS, and JavaScript.
-      </p>
-    </div>
-  </section>
+<!-- ABOUT ME SECTION -->
+<section>
+<div class="about">
+<h2>About Me</h2>
+<p>
+I am a frontend developer learning how to build modern and responsive websites
+using HTML, CSS, and JavaScript.
+</p>
+</div>
+</section>
 
-  <!-- SKILLS SECTION -->
-  <section>
-    <div class="skill">
-      <h1>SKILLS ACQUIRED</h1>
-      <ul>
-        <li>HTML</li>
-        <li>CSS</li>
-        <li>A little bit of JavaScript</li>
-      </ul>
-    </div>
-  </section>
+<!-- SKILLS SECTION -->
+<section>
+<div class="skill">
+<h1>SKILLS ACQUIRED</h1>
+<ul>
+<li>HTML</li>
+<li>CSS</li>
+<li>A little bit of JavaScript</li>
+</ul>
+</div>
+</section>
 
-  <!-- PROJECTS SECTION -->
-  <section>
-    <div class="projects">
-      <h2>Projects</h2>
-      <ul>
-        <li>Rock Paper Scissors Game: A simple game built with JavaScript, HTML and CSS.</li>
-        <li>Music Landing Page: A modern website layout for a music platform.</li>
-        <li>A minor Calculator project</li>
-      </ul>
-    </div>
-  </section>
+<!-- PROJECTS SECTION -->
+<section>
+<div class="projects">
+<h2>Projects</h2>
+<ul>
+<li>Rock Paper Scissors Game: A simple game built with JavaScript, HTML and CSS.</li>
+<li>Music Landing Page: A modern website layout for a music platform.</li>
+<li>A minor Calculator project</li>
+</ul>
+</div>
+</section>
 
-  <!-- FOOTER / CONTACT -->
-  <footer>
-    <h2>Contact Me @</h2>
-    <a href="#">Email: dehinbotitus@gmail.com | | phonenumber: 08053950665</a>
-  </footer>
+<!-- FOOTER / CONTACT -->
+<footer>
+<h2>Contact Me @</h2>
+<a href="#">Email: dehinbotitus@gmail.com | | phonenumber: 08053950665</a>
+</footer>
 
 </body>
 
