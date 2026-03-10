@@ -2,373 +2,508 @@
 <html lang="en">
 
 <head>
-<meta charset="UTF-8">
-<!-- Makes the page scale correctly on ALL screen sizes -->
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Dehinbo Titus | Frontend Developer</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dehinbo Titus | Frontend Developer</title>
 
+  <style>
+    /* ===== RESET ===== */
+    * {
+      padding: 0;
+      /* removes default spacing inside all elements */
+      margin: 0;
+      /* removes default spacing outside all elements */
+      box-sizing: border-box;
+      /* padding won't add extra width to elements */
+    }
 
-<style>
-/* ===== RESET ===== */
-* {
-padding: 0;
-margin: 0;
-box-sizing: border-box;
-}
+    /* ===== BODY ===== */
+    body {
+      background: url("back2.png");
+      /* sets a background image for the whole page */
+      width: 100%;
+      /* body stretches the full width of the screen */
+      min-height: 100vh;
+      /* page is at least as tall as the screen */
+      overflow-x: hidden;
+      /* hides accidental horizontal scrollbar */
+      font-family: 'Raleway', sans-serif;
+      /* sets the font for all text on the page */
+      color: #fff;
+      /* makes all default text white */
+    }
 
-/* ===== BODY — YOUR ORIGINAL BACKGROUND RESTORED ===== */
-body {
-background: url("back2.png");
-width: 100%;
-min-height: 100vh;
-overflow-x: hidden;
-font-family: 'Raleway', sans-serif;
-color: #fff;
-}
+    /* ===== NAVIGATION ===== */
+    nav {
+      display: flex;
+      /* lines nav items side by side */
+      justify-content: space-between;
+      /* pushes logo left, links right */
+      align-items: center;
+      /* vertically centers nav items */
+      padding: 16px 24px;
+      /* space inside nav (top/bottom 16px, left/right 24px) */
+      border-bottom: 1px solid #222;
+      /* thin dark line below the nav */
+      flex-wrap: wrap;
+      /* items wrap to next line on small screens */
+      gap: 10px;
+      /* space between items when they wrap */
+    }
 
-/* ===== NAVIGATION ===== */
-nav {
-display: flex;
-justify-content: space-between;
-align-items: center;
-padding: 16px 24px;
-border-bottom: 1px solid #222;
-flex-wrap: wrap;
-/* Wraps on tiny screens */
-gap: 10px;
-}
+    /* ===== LOGO BADGE ===== */
+    .hero {
+      color: white;
+      /* logo text is white */
+      border: 1px dashed green;
+      /* dashed green border around the logo */
+      border-radius: 10px;
+      /* rounds the corners of the logo box */
+      padding: 8px 16px;
+      /* space inside the logo box */
+      background-color: black;
+      /* black background behind the logo */
+      font-weight: 700;
+      /* makes the logo text bold */
+      white-space: nowrap;
+      /* stops the logo text from wrapping to a new line */
+    }
 
-/* ===== LOGO BADGE ===== */
-.hero {
-color: white;
-border: 1px dashed green;
-border-radius: 10px;
-padding: 8px 16px;
-background-color: black;
-font-weight: 700;
-white-space: nowrap;
-}
+    /* ===== NAV LINKS ===== */
+    .nav-links {
+      display: flex;
+      /* lines the links side by side */
+      gap: 16px;
+      /* space between each link */
+      list-style: none;
+      /* removes bullet points from the list */
+      flex-wrap: wrap;
+      /* links wrap on small screens */
+    }
 
-/* ===== NAV LINKS ===== */
-.nav-links {
-display: flex;
-gap: 16px;
-list-style: none;
-flex-wrap: wrap;
-}
+    .nav-links a {
+      color: white;
+      /* link text is white */
+      text-decoration: none;
+      /* removes the underline from links */
+      transition: all 0.3s ease;
+      /* makes hover effects animate smoothly */
+    }
 
-.nav-links a {
-color: white;
-text-decoration: none;
-transition: all 0.3s ease;
-}
+    .nav-links a:hover {
+      opacity: 0.6;
+      /* makes the link slightly see-through on hover */
+      color: rgb(14, 199, 60);
+      /* changes text to green on hover */
+      border: 1px solid white;
+      /* adds a white border around the link on hover */
+      border-radius: 2px;
+      /* slightly rounds the hover border corners */
+    }
 
-.nav-links a:hover {
-opacity: 0.6;
-color: rgb(14, 199, 60);
-border: 1px solid white;
-border-radius: 2px;
-}
+    /* ===== GREEN DIVIDER LINE ===== */
+    .line {
+      border: 2px solid green;
+      /* a solid green line */
+      border-radius: 3px;
+      /* slightly rounded ends on the line */
+      width: 100%;
+      /* line stretches full width of the page */
+    }
 
-/* ===== GREEN DIVIDER LINE ===== */
-.line {
-border: 2px solid green;
-border-radius: 3px;
-width: 100%;
-}
+    /* ===== INTRO WRAPPER ===== */
+    .intro-wrapper {
+      display: flex;
+      /* places intro text and image side by side */
+      justify-content: space-between;
+      /* pushes text to left and image to right */
+      align-items: center;
+      /* vertically centers both items */
+      margin: 40px 10px 10px 10px;
+      /* space outside (top: 40px, rest: 10px) */
+      padding: 10px;
+      /* space inside the wrapper */
+      gap: 20px;
+      /* space between the text and the image */
+      flex-wrap: wrap;
+      /* stacks them on small screens */
+    }
 
-/* ===== INTRO WRAPPER ===== */
-.intro-wrapper {
-display: flex;
-justify-content: space-between;
-align-items: center;
-margin: 40px 10px 10px 10px;
-padding: 10px;
-gap: 20px;
-flex-wrap: wrap;
-/* Stacks on small screens */
-}
+    /* ===== INTRO TEXT ===== */
+    .intro {
+      display: flex;
+      /* stacks the text lines vertically */
+      flex-direction: column;
+      /* makes children go top to bottom */
+      border-left: 4px solid green;
+      /* green bar on the left side */
+      padding-left: 20px;
+      /* space between the green bar and the text */
+      flex: 1;
+      /* allows this section to grow and fill available space */
+      min-width: 0;
+      /* allows it to shrink properly on small screens */
+    }
 
-/* ===== INTRO TEXT ===== */
-.intro {
-display: flex;
-flex-direction: column;
-border-left: 4px solid green;
-padding-left: 20px;
-flex: 1;
-min-width: 0;
-/* Allows it to shrink properly on mobile */
-}
+    /* ===== BIG "Hi," TEXT ===== */
+    .intro p {
+      color: green;
+      /* the "Hi," text is green */
+      font-size: clamp(32px, 10vw, 60px);
+      /* font scales with screen size, min 32px max 60px */
+      font-weight: bolder;
+      /* makes the text very bold */
+      margin: 10px;
+      /* space around the text */
+    }
 
-/* ===== BIG "Hi," TEXT ===== */
-.intro p {
-color: green;
-font-size: clamp(32px, 10vw, 60px);
-/* Scales smoothly on all screens */
-font-weight: bolder;
-margin: 10px;
-}
+    /* ===== YOUR NAME ===== */
+    .name {
+      margin: 10px;
+      /* space around the name */
+      font-size: clamp(14px, 4vw, 20px);
+      /* font scales with screen, min 14px max 20px */
+      font-weight: bolder;
+      /* makes the name bold */
+    }
 
-/* ===== YOUR NAME ===== */
-.name {
-margin: 10px;
-font-size: clamp(14px, 4vw, 20px);
-font-weight: bolder;
-}
+    /* ===== TAGLINE ===== */
+    .intro span {
+      color: rgb(6, 109, 15);
+      /* dark green color for the tagline */
+      font-size: clamp(11px, 3vw, 15px);
+      /* scales with screen size, min 11px max 15px */
+      margin: 10px;
+      /* space around the tagline */
+      font-weight: bolder;
+      /* makes tagline bold */
+      font-style: italic;
+      /* makes the tagline italic */
+      line-height: 1.6;
+      /* adds space between lines of text */
+    }
 
-/* ===== TAGLINE ===== */
-.intro span {
-color: rgb(6, 109, 15);
-font-size: clamp(11px, 3vw, 15px);
-margin: 10px;
-font-weight: bolder;
-font-style: italic;
-line-height: 1.6;
-}
+    /* ===== PROFILE IMAGE ===== */
+    .profile-img {
+      width: clamp(100px, 20vw, 200px);
+      /* image width scales with screen, min 100px max 200px */
+      height: clamp(100px, 20vw, 200px);
+      /* image height matches width */
+      object-fit: cover;
+      /* image fills the box without stretching */
+      margin-right: clamp(0px, 5vw, 100px);
+      /* right spacing shrinks on small screens */
+      flex-shrink: 0;
+      /* stops the image from shrinking too small */
+    }
 
-/* ===== PROFILE IMAGE ===== */
-.profile-img {
-width: clamp(100px, 20vw, 200px);
-/* Shrinks on small phones */
-height: clamp(100px, 20vw, 200px);
-object-fit: cover;
-margin-right: clamp(0px, 5vw, 100px);
-flex-shrink: 0;
-}
+    /* ===== ABOUT ME SECTION ===== */
+    .about {
+      background-color: black;
+      /* black background for the about section */
+      margin: 10px;
+      /* space outside the section */
+      margin-top: 30px;
+      /* extra space above the section */
+      padding: 20px;
+      /* space inside the section */
+      border-left: 4px solid green;
+      /* green bar on the left */
+    }
 
-/* ===== ABOUT ME SECTION ===== */
-.about {
-background-color: black;
-margin: 10px;
-margin-top: 30px;
-padding: 20px;
-border-left: 4px solid green;
-}
+    .about h2 {
+      color: white;
+      /* heading text is white */
+      margin-bottom: 10px;
+      /* space below the heading */
+    }
 
-.about h2 {
-color: white;
-margin-bottom: 10px;
-}
+    .about p {
+      margin: 10px;
+      /* space around the paragraph */
+      margin-bottom: 10px;
+      /* extra space below the paragraph */
+      color: green;
+      /* paragraph text is green */
+      line-height: 1.6;
+      /* space between lines */
+    }
 
-.about p {
-margin: 10px;
-margin-bottom: 10px;
-color: green;
-line-height: 1.6;
-}
+    /* ===== SKILLS SECTION ===== */
+    .skill {
+      background: url("back.png");
+      /* background image for the skills section */
+      border-left: 4px solid green;
+      /* green bar on the left */
+      padding: 20px;
+      /* space inside the section */
+      margin: 10px;
+      /* space outside the section */
+      margin-top: 30px;
+      /* extra space above the section */
+    }
 
-/* ===== SKILLS SECTION ===== */
-.skill {
-background: url("back.png");
-border-left: 4px solid green;
-padding: 20px;
-margin: 10px;
-margin-top: 30px;
-}
+    .skill h1 {
+      color: green;
+      /* heading text is green */
+      font-size: 14px;
+      /* small font size for the heading */
+      letter-spacing: 4px;
+      /* spreads the letters apart */
+    }
 
-.skill h1 {
-color: green;
-font-size: 14px;
-letter-spacing: 4px;
-}
+    .skill ul {
+      list-style: none;
+      /* removes bullet points */
+      margin-top: 20px;
+      /* space above the list */
+    }
 
-.skill ul {
-list-style: none;
-margin-top: 20px;
-}
+    /* ===== EACH SKILL ITEM ===== */
+    .skill li {
+      padding: 10px 16px;
+      /* space inside each skill box */
+      border: 1px solid #222;
+      /* thin dark border around each skill */
+      margin-bottom: 8px;
+      /* space between each skill item */
+      color: white;
+      /* skill text is white */
+      font-size: clamp(14px, 3vw, 18px);
+      /* font scales with screen size */
+      font-weight: bolder;
+      /* makes skill text bold */
+      border-radius: 4px;
+      /* slightly rounds the corners */
+      transition: all 0.3s ease;
+      /* hover effects animate smoothly */
+    }
 
-/* ===== EACH SKILL ITEM ===== */
-.skill li {
-padding: 10px 16px;
-border: 1px solid #222;
-margin-bottom: 8px;
-color: white;
-font-size: clamp(14px, 3vw, 18px);
-font-weight: bolder;
-border-radius: 4px;
-transition: all 0.3s ease;
-}
+    .skill li::before {
+      content: "▹ ";
+      /* adds a green arrow before each skill */
+      color: green;
+      /* arrow is green */
+    }
 
-.skill li::before {
-content: "▹ ";
-color: green;
-}
+    .skill li:hover {
+      border-color: green;
+      /* border turns green on hover */
+      color: green;
+      /* text turns green on hover */
+      cursor: default;
+      /* keeps the cursor as a normal arrow (not a pointer) */
+    }
 
-.skill li:hover {
-border-color: green;
-color: green;
-cursor: default;
-}
+    /* ===== PROJECTS SECTION ===== */
+    .projects {
+      background-color: rgb(6, 19, 77);
+      /* dark blue background for projects */
+      border-left: 4px solid green;
+      /* green bar on the left */
+      margin: 10px;
+      /* space outside the section */
+      padding: 20px;
+      /* space inside the section */
+      margin-top: 40px;
+      /* extra space above the section */
+    }
 
-/* ===== PROJECTS SECTION ===== */
-.projects {
-background-color: rgb(6, 19, 77);
-border-left: 4px solid green;
-margin: 10px;
-padding: 20px;
-margin-top: 40px;
-}
+    .projects h2 {
+      color: green;
+      /* heading is green */
+      font-family: Georgia, 'Times New Roman', Times, serif;
+      /* different font for this heading */
+      margin-bottom: 10px;
+      /* space below the heading */
+    }
 
-.projects h2 {
-color: green;
-font-family: Georgia, 'Times New Roman', Times, serif;
-margin-bottom: 10px;
-}
+    .projects ul {
+      margin: 10px;
+      /* space around the list */
+      list-style-type: none;
+      /* removes bullet points */
+    }
 
-.projects ul {
-margin: 10px;
-list-style-type: none;
-}
+    /* ===== EACH PROJECT ITEM ===== */
+    .projects li {
+      margin: 10px 0;
+      /* space above and below each project */
+      padding: 10px;
+      /* space inside each project box */
+      border: 2px solid green;
+      /* green border around each project */
+      border-radius: 5px;
+      /* rounds the corners */
+      transition: all 0.3s ease;
+      /* hover effects animate smoothly */
+      font-size: clamp(13px, 2.5vw, 16px);
+      /* font scales with screen size */
+      line-height: 1.5;
+      /* space between lines of text */
+      word-break: break-word;
+      /* stops long words from overflowing the box */
+    }
 
-/* ===== EACH PROJECT ITEM ===== */
-.projects li {
-margin: 10px 0;
-padding: 10px;
-border: 2px solid green;
-border-radius: 5px;
-transition: all 0.3s ease;
-font-size: clamp(13px, 2.5vw, 16px);
-line-height: 1.5;
-word-break: break-word;
-/* Stops text overflowing on tiny screens */
-}
+    .projects li::before {
+      content: "$ ";
+      /* adds a dollar sign before each project (like a terminal) */
+      color: green;
+      /* dollar sign is green */
+    }
 
-.projects li::before {
-content: "$ ";
-color: green;
-}
+    .projects li a {
+      color: blue;
+      /* project links are blue */
+    }
 
-.projects li a{
-  color: blue;
-}
-.projects li a:hover{
-  color: red;
-  border: 3px solid red;
-}
+    .projects li a:hover {
+      color: red;
+      /* link turns red on hover */
+      border: 3px solid red;
+      /* red border appears around link on hover */
+    }
 
-/* ===== FOOTER ===== */
-footer {
-display: flex;
-flex-direction: column;
-align-items: center;
-padding: 20px;
-margin-top: 30px;
-text-align: center;
-}
+    /* ===== FOOTER ===== */
+    footer {
+      display: flex;
+      /* uses flexbox for layout */
+      flex-direction: column;
+      /* stacks items vertically */
+      align-items: center;
+      /* centers everything horizontally */
+      padding: 20px;
+      /* space inside the footer */
+      margin-top: 30px;
+      /* space above the footer */
+      text-align: center;
+      /* centers the text */
+    }
 
-footer h2 {
-color: rgb(94, 75, 75);
-margin-bottom: 10px;
-}
+    footer h2 {
+      color: rgb(94, 75, 75);
+      /* brownish color for the footer heading */
+      margin-bottom: 10px;
+      /* space below the heading */
+    }
 
-footer a {
-color: green;
-text-decoration: none;
-word-break: break-word;
-/* Stops long email overflowing */
-text-align: center;
-}
+    footer a {
+      color: green;
+      /* footer link is green */
+      text-decoration: none;
+      /* removes underline from the link */
+      word-break: break-word;
+      /* stops long email from overflowing */
+      text-align: center;
+      /* centers the link text */
+    }
 
-footer a:hover {
-color: red;
-}
+    footer a:hover {
+      color: red;
+      /* link turns red on hover */
+    }
 
-/* ===== SMALL PHONES (under 480px) ===== */
-@media (max-width: 480px) {
+    /* ===== SMALL PHONES (under 480px) ===== */
+    @media (max-width: 480px) {
+      /* these styles ONLY apply when screen is 480px or smaller */
 
-/* Stack intro text and image vertically */
-.intro-wrapper {
-flex-direction: column;
-align-items: flex-start;
-}
+      .intro-wrapper {
+        flex-direction: column;
+        /* stacks text and image vertically on phones */
+        align-items: flex-start;
+        /* aligns items to the left */
+      }
 
-/* Center image below the text */
-.profile-img {
-margin-right: 0;
-align-self: center;
-}
+      .profile-img {
+        margin-right: 0;
+        /* removes right margin on phones */
+        align-self: center;
+        /* centers the image on phones */
+      }
 
-/* Center nav items on small phones */
-nav {
-flex-direction: column;
-align-items: flex-start;
-}
-}
-</style>
+      nav {
+        flex-direction: column;
+        /* stacks nav items vertically on phones */
+        align-items: flex-start;
+        /* aligns nav items to the left */
+      }
+    }
+  </style>
 </head>
 
 <body>
 
-<!-- NAVIGATION BAR -->
-<nav>
-<div class="hero">Dehinbo Titus</div>
-<ul class="nav-links">
-<li><a href="#">Home</a></li>
-<li><a href="#">About</a></li>
-<li><a href="#">Contact</a></li>
-</ul>
-</nav>
+  <!-- NAVIGATION BAR -->
+  <nav>
+    <div class="hero">Dehinbo Titus</div> <!-- logo/name badge on the left -->
+    <ul class="nav-links">
+      <li><a href="#">Home</a></li> <!-- home link -->
+      <li><a href="#">About</a></li> <!-- about link -->
+      <li><a href="#">Contact</a></li> <!-- contact link -->
+    </ul>
+  </nav>
 
-<!-- GREEN DIVIDER LINE -->
-<div class="line"></div>
+  <!-- GREEN DIVIDER LINE -->
+  <div class="line"></div> <!-- decorative green line below nav -->
 
-<!-- INTRO SECTION: text + image -->
-<div class="intro-wrapper">
-<div class="intro">
-<p>Hi,</p>
-<div class="name">I'm Dehinbo Titus.</div>
-<span>I enjoy turning ideas into interactive websites and continuously improving my skills in web
-development.</span>
-</div>
-<img class="profile-img" src="remove.png" alt="profile image">
-</div>
+  <!-- INTRO SECTION -->
+  <div class="intro-wrapper">
+    <div class="intro">
+      <p>Hi,</p> <!-- big green greeting text -->
+      <div class="name">I'm Dehinbo Titus.</div> <!-- your name -->
+      <span>I enjoy turning ideas into interactive websites and continuously improving my skills in web
+        development.</span> <!-- short tagline about yourself -->
+    </div>
+    <img class="profile-img" src="remove.png" alt="profile image"> <!-- your profile photo -->
+  </div>
 
-<!-- ABOUT ME SECTION -->
-<section>
-<div class="about">
-<h2>About Me</h2>
-<p>
-I am a frontend developer learning how to build modern and responsive websites
-using HTML, CSS, and JavaScript.
-</p>
-</div>
-</section>
+  <!-- ABOUT ME SECTION -->
+  <section>
+    <div class="about">
+      <h2>About Me</h2> <!-- section heading -->
+      <p>
+        I am a frontend developer learning how to build modern and responsive websites
+        using HTML, CSS, and JavaScript. <!-- short description about yourself -->
+      </p>
+    </div>
+  </section>
 
-<!-- SKILLS SECTION -->
-<section>
-<div class="skill">
-<h1>SKILLS ACQUIRED</h1>
-<ul>
-<li>HTML</li>
-<li>CSS</li>
-<li>A little bit of JavaScript</li>
-</ul>
-</div>
-</section>
+  <!-- SKILLS SECTION -->
+  <section>
+    <div class="skill">
+      <h1>SKILLS ACQUIRED</h1> <!-- section heading -->
+      <ul>
+        <li>HTML</li> <!-- skill 1 -->
+        <li>CSS</li> <!-- skill 2 -->
+        <li>A little bit of JavaScript</li> <!-- skill 3 -->
+      </ul>
+    </div>
+  </section>
 
-<!-- PROJECTS SECTION -->
-<section>
-<div class="projects">
-<h2>Projects</h2>
-<ul>
-<li>Rock Paper Scissors Game: A simple game built with JavaScript, HTML and CSS.
-  <a href = "https://rockpaperscissorsbytt.netlify.app/">View Project</a>
-</li>
-<li>Music Landing Page: A modern website layout for a music platform.
-  <a href = "#">still working on it</a>
-</li>
-<li>A minor Calculator project
-  <a href = "https://titus12345-dehinbo.github.io/quick-calculator/">view project</a>
-</li>
-</ul>
-</div>
-</section>
+  <!-- PROJECTS SECTION -->
+  <section>
+    <div class="projects">
+      <h2>Projects</h2> <!-- section heading -->
+      <ul>
+        <li>Rock Paper Scissors Game: A simple game built with JavaScript, HTML and CSS.
+          <a href="https://rockpaperscissorsbytt.netlify.app/">View Project</a> <!-- link to live project -->
+        </li>
+        <li>Music Landing Page: A modern website layout for a music platform.
+          <a href="#">still working on it</a> <!-- placeholder link -->
+        </li>
+        <li>A minor Calculator project
+          <a href="https://titus12345-dehinbo.github.io/quick-calculator/">view project</a>
+          <!-- link to live project -->
+        </li>
+      </ul>
+    </div>
+  </section>
 
-<!-- FOOTER / CONTACT -->
-<footer>
-<h2>Contact Me @</h2>
-<a href="#">Email: dehinbotitus@gmail.com | | phonenumber: 08053950665</a>
-</footer>
+  <!-- FOOTER / CONTACT -->
+  <footer>
+    <h2>Contact Me @</h2> <!-- footer heading -->
+    <a href="#">Email: dehinbotitus@gmail.com | | phonenumber: 08053950665</a> <!-- contact details -->
+  </footer>
 
 </body>
 
