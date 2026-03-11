@@ -8,21 +8,30 @@
 
   <style>
     /* ===== RESET ===== */
+    /* ===== RESET ===== */
     * {
       padding: 0;
       margin: 0;
       box-sizing: border-box;
+      max-width: 100%;
+      /* ADDED: every single element can never be wider than the screen */
     }
 
-    /* ===== BODY ===== */
+    html {
+      overflow-x: hidden;
+      /* ADDED: locks horizontal scroll on the html element itself */
+    }
+
     body {
       background: url("back2.png");
       width: 100%;
       min-height: 100vh;
       overflow-x: hidden;
+      /* this was already here, now html + body both block it */
       font-family: 'Raleway', sans-serif;
       color: #eaeaea;
-      /* CHANGED: was #fff, now a softer off-white for easier reading */
+      position: relative;
+      /* ADDED: keeps everything contained inside body */
     }
 
     /* ===== NAVIGATION ===== */
@@ -30,55 +39,52 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 16px 24px;
+      padding: clamp(6px, 2vw, 16px) clamp(8px, 3vw, 24px);
       border-bottom: 1px solid #1a1a2e;
-      /* CHANGED: was #222, now deep navy dark line */
-      flex-wrap: wrap;
-      gap: 10px;
+      width: 100%;
+      /* CHANGED: nav never overflows screen width */
     }
 
     /* ===== LOGO BADGE ===== */
     .hero {
       color: #00f5d4;
-      /* CHANGED: was white, now bright cyan/mint for a modern pop */
       border: 1px dashed #00f5d4;
-      /* CHANGED: was green, now matches the cyan accent */
       border-radius: 10px;
-      padding: 8px 16px;
+      padding: clamp(3px, 1vw, 8px) clamp(6px, 2vw, 16px);
       background-color: #0d0d0d;
-      /* CHANGED: was plain black, now slightly rich dark */
       font-weight: 700;
       white-space: nowrap;
+      font-size: clamp(9px, 2.8vw, 16px);
+      /* shrinks to fit small screens */
     }
 
     /* ===== NAV LINKS ===== */
     .nav-links {
       display: flex;
-      gap: 16px;
+      gap: clamp(4px, 1.5vw, 16px);
+      /* gap shrinks on small screens */
       list-style: none;
-      flex-wrap: wrap;
     }
 
     .nav-links a {
       color: #eaeaea;
-      /* CHANGED: was white, now soft off-white to match body */
       text-decoration: none;
       transition: all 0.3s ease;
+      font-size: clamp(9px, 2.5vw, 16px);
+      /* shrinks to fit small screens */
+      white-space: nowrap;
     }
 
     .nav-links a:hover {
       opacity: 0.6;
       color: #00f5d4;
-      /* CHANGED: was rgb(14,199,60) green, now cyan to match theme */
       border: 1px solid #00f5d4;
-      /* CHANGED: was white border, now cyan border on hover */
       border-radius: 2px;
     }
 
     /* ===== CYAN DIVIDER LINE ===== */
     .line {
       border: 2px solid #00f5d4;
-      /* CHANGED: was green, now cyan to match accent color */
       border-radius: 3px;
       width: 100%;
     }
@@ -88,10 +94,13 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin: 40px 10px 10px 10px;
+      margin: clamp(10px, 4vw, 40px) 10px 10px 10px;
       padding: 10px;
-      gap: 20px;
-      flex-wrap: wrap;
+      gap: clamp(6px, 2vw, 20px);
+      width: 100%;
+      /* CHANGED: never overflows screen */
+      overflow: hidden;
+      /* CHANGED: nothing bleeds outside this container */
     }
 
     /* ===== INTRO TEXT ===== */
@@ -99,90 +108,99 @@
       display: flex;
       flex-direction: column;
       border-left: 4px solid #00f5d4;
-      /* CHANGED: was green, now cyan accent bar */
-      padding-left: 20px;
+      padding-left: clamp(6px, 2vw, 20px);
       flex: 1;
       min-width: 0;
+      /* KEY: allows text to shrink without overflowing */
+      overflow: hidden;
     }
 
     /* ===== BIG "Hi," TEXT ===== */
     .intro p {
       color: #00f5d4;
-      /* CHANGED: was green, now cyan for the big greeting */
-      font-size: clamp(32px, 10vw, 60px);
+      font-size: clamp(18px, 7vw, 60px);
+      /* shrinks smoothly on small screens */
       font-weight: bolder;
-      margin: 10px;
+      margin: clamp(3px, 1vw, 10px);
     }
 
     /* ===== YOUR NAME ===== */
     .name {
-      margin: 10px;
-      font-size: clamp(14px, 4vw, 20px);
+      margin: clamp(3px, 1vw, 10px);
+      font-size: clamp(11px, 3vw, 22px);
+      /* shrinks smoothly */
       font-weight: bolder;
       color: #ffffff;
-      /* CHANGED: now pure white so the name stands out boldly */
     }
 
     /* ===== TAGLINE ===== */
     .intro span {
       color: #a0c4ff;
-      /* CHANGED: was dark green, now soft light blue for elegance */
-      font-size: clamp(11px, 3vw, 15px);
-      margin: 10px;
+      font-size: clamp(8px, 2.2vw, 15px);
+      /* shrinks smoothly */
+      margin: clamp(3px, 1vw, 10px);
       font-weight: bolder;
       font-style: italic;
       line-height: 1.6;
+      display: block;
+      /* CHANGED: ensures text wraps properly inside its box */
+      word-break: break-word;
+      /* CHANGED: long words wrap instead of overflowing */
     }
 
     /* ===== PROFILE IMAGE ===== */
     .profile-img {
-      width: clamp(100px, 20vw, 200px);
-      height: clamp(100px, 20vw, 200px);
+      width: clamp(50px, 12vw, 200px);
+      /* shrinks with screen, stays on the right */
+      height: clamp(50px, 12vw, 200px);
       object-fit: cover;
-      margin-right: clamp(0px, 5vw, 100px);
+      border-radius: 10px;
       flex-shrink: 0;
     }
 
     /* ===== ABOUT ME SECTION ===== */
     .about {
       background-color: #0d0d1a;
-      /* CHANGED: was plain black, now deep navy black */
       margin: 10px;
       margin-top: 30px;
-      padding: 20px;
+      padding: clamp(10px, 3vw, 20px);
       border-left: 4px solid #00f5d4;
-      /* CHANGED: was green, now cyan accent bar */
+      width: calc(100% - 20px);
+      /* CHANGED: stays within screen bounds */
+      overflow: hidden;
     }
 
     .about h2 {
       color: #ffffff;
-      /* CHANGED: stays white but now truly pure white heading */
       margin-bottom: 10px;
+      font-size: clamp(13px, 3vw, 22px);
     }
 
     .about p {
       margin: 10px;
       margin-bottom: 10px;
       color: #a0c4ff;
-      /* CHANGED: was green, now soft light blue for readability */
       line-height: 1.6;
+      font-size: clamp(10px, 2.5vw, 16px);
+      word-break: break-word;
     }
 
     /* ===== SKILLS SECTION ===== */
     .skill {
       background: url("back.png");
       border-left: 4px solid #00f5d4;
-      /* CHANGED: was green, now cyan accent bar */
-      padding: 20px;
+      padding: clamp(10px, 3vw, 20px);
       margin: 10px;
       margin-top: 30px;
+      width: calc(100% - 20px);
+      /* CHANGED: stays within screen bounds */
+      overflow: hidden;
     }
 
     .skill h1 {
       color: #00f5d4;
-      /* CHANGED: was green, now cyan heading */
-      font-size: 14px;
-      letter-spacing: 4px;
+      font-size: clamp(9px, 2vw, 14px);
+      letter-spacing: clamp(1px, 1vw, 4px);
     }
 
     .skill ul {
@@ -192,13 +210,11 @@
 
     /* ===== EACH SKILL ITEM ===== */
     .skill li {
-      padding: 10px 16px;
+      padding: clamp(5px, 1.5vw, 10px) clamp(7px, 2vw, 16px);
       border: 1px solid #1a1a2e;
-      /* CHANGED: was #222, now deep navy border */
       margin-bottom: 8px;
       color: #eaeaea;
-      /* CHANGED: was white, now soft off-white */
-      font-size: clamp(14px, 3vw, 18px);
+      font-size: clamp(10px, 2.5vw, 18px);
       font-weight: bolder;
       border-radius: 4px;
       transition: all 0.3s ease;
@@ -207,33 +223,31 @@
     .skill li::before {
       content: "▹ ";
       color: #00f5d4;
-      /* CHANGED: was green, now cyan arrow */
     }
 
     .skill li:hover {
       border-color: #00f5d4;
-      /* CHANGED: was green, now cyan border on hover */
       color: #00f5d4;
-      /* CHANGED: was green, now cyan text on hover */
       cursor: default;
     }
 
     /* ===== PROJECTS SECTION ===== */
     .projects {
       background-color: #0a0a1f;
-      /* CHANGED: was rgb(6,19,77) blue, now deeper richer navy */
       border-left: 4px solid #00f5d4;
-      /* CHANGED: was green, now cyan accent bar */
       margin: 10px;
-      padding: 20px;
+      padding: clamp(10px, 3vw, 20px);
       margin-top: 40px;
+      width: calc(100% - 20px);
+      /* CHANGED: stays within screen bounds */
+      overflow: hidden;
     }
 
     .projects h2 {
       color: #00f5d4;
-      /* CHANGED: was green, now cyan heading */
       font-family: Georgia, 'Times New Roman', Times, serif;
       margin-bottom: 10px;
+      font-size: clamp(13px, 3vw, 22px);
     }
 
     .projects ul {
@@ -244,32 +258,30 @@
     /* ===== EACH PROJECT ITEM ===== */
     .projects li {
       margin: 10px 0;
-      padding: 10px;
+      padding: clamp(6px, 2vw, 10px);
       border: 2px solid #00f5d4;
-      /* CHANGED: was green, now cyan border */
       border-radius: 5px;
       transition: all 0.3s ease;
-      font-size: clamp(13px, 2.5vw, 16px);
+      font-size: clamp(10px, 2.2vw, 16px);
       line-height: 1.5;
       word-break: break-word;
+      /* CHANGED: text wraps instead of overflowing */
     }
 
     .projects li::before {
       content: "$ ";
       color: #00f5d4;
-      /* CHANGED: was green, now cyan dollar sign */
     }
 
     .projects li a {
       color: #a0c4ff;
-      /* CHANGED: was plain blue, now soft sky blue that fits the theme */
+      font-size: clamp(9px, 2vw, 14px);
+      word-break: break-word;
     }
 
     .projects li a:hover {
       color: #ff6b6b;
-      /* CHANGED: was red, now a softer coral red — less harsh */
       border: 3px solid #ff6b6b;
-      /* CHANGED: was red, now matches the softer coral hover */
     }
 
     /* ===== FOOTER ===== */
@@ -277,46 +289,31 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      padding: 20px;
+      padding: clamp(10px, 3vw, 20px);
       margin-top: 30px;
       text-align: center;
+      width: 100%;
+      overflow: hidden;
     }
 
     footer h2 {
       color: #a0c4ff;
-      /* CHANGED: was brownish rgb(94,75,75), now soft blue — more cohesive */
       margin-bottom: 10px;
+      font-size: clamp(11px, 2.5vw, 18px);
     }
 
     footer a {
       color: #00f5d4;
-      /* CHANGED: was green, now cyan to match overall accent */
       text-decoration: none;
       word-break: break-word;
+      /* CHANGED: long email wraps instead of overflowing */
       text-align: center;
+      font-size: clamp(9px, 2vw, 14px);
+      padding: 0 10px;
     }
 
     footer a:hover {
       color: #ff6b6b;
-      /* CHANGED: was red, now soft coral red on hover */
-    }
-
-    /* ===== SMALL PHONES (under 480px) ===== */
-    @media (max-width: 480px) {
-      .intro-wrapper {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-
-      .profile-img {
-        margin-right: 0;
-        align-self: center;
-      }
-
-      nav {
-        flex-direction: column;
-        align-items: flex-start;
-      }
     }
   </style>
 </head>
