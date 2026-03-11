@@ -10,422 +10,312 @@
     /* ===== RESET ===== */
     * {
       padding: 0;
-      /* removes default spacing inside all elements */
       margin: 0;
-      /* removes default spacing outside all elements */
       box-sizing: border-box;
-      /* padding won't add extra width to elements */
     }
 
     /* ===== BODY ===== */
     body {
       background: url("back2.png");
-      /* sets a background image for the whole page */
       width: 100%;
-      /* body stretches the full width of the screen */
       min-height: 100vh;
-      /* page is at least as tall as the screen */
       overflow-x: hidden;
-      /* hides accidental horizontal scrollbar */
       font-family: 'Raleway', sans-serif;
-      /* sets the font for all text on the page */
-      color: #fff;
-      /* makes all default text white */
+      color: #eaeaea;
+      /* CHANGED: was #fff, now a softer off-white for easier reading */
     }
 
     /* ===== NAVIGATION ===== */
     nav {
       display: flex;
-      /* lines nav items side by side */
       justify-content: space-between;
-      /* pushes logo left, links right */
       align-items: center;
-      /* vertically centers nav items */
       padding: 16px 24px;
-      /* space inside nav (top/bottom 16px, left/right 24px) */
-      border-bottom: 1px solid #222;
-      /* thin dark line below the nav */
+      border-bottom: 1px solid #1a1a2e;
+      /* CHANGED: was #222, now deep navy dark line */
       flex-wrap: wrap;
-      /* items wrap to next line on small screens */
       gap: 10px;
-      /* space between items when they wrap */
     }
 
     /* ===== LOGO BADGE ===== */
     .hero {
-      color: white;
-      /* logo text is white */
-      border: 1px dashed green;
-      /* dashed green border around the logo */
+      color: #00f5d4;
+      /* CHANGED: was white, now bright cyan/mint for a modern pop */
+      border: 1px dashed #00f5d4;
+      /* CHANGED: was green, now matches the cyan accent */
       border-radius: 10px;
-      /* rounds the corners of the logo box */
       padding: 8px 16px;
-      /* space inside the logo box */
-      background-color: black;
-      /* black background behind the logo */
+      background-color: #0d0d0d;
+      /* CHANGED: was plain black, now slightly rich dark */
       font-weight: 700;
-      /* makes the logo text bold */
       white-space: nowrap;
-      /* stops the logo text from wrapping to a new line */
     }
 
     /* ===== NAV LINKS ===== */
     .nav-links {
       display: flex;
-      /* lines the links side by side */
       gap: 16px;
-      /* space between each link */
       list-style: none;
-      /* removes bullet points from the list */
       flex-wrap: wrap;
-      /* links wrap on small screens */
     }
 
     .nav-links a {
-      color: white;
-      /* link text is white */
+      color: #eaeaea;
+      /* CHANGED: was white, now soft off-white to match body */
       text-decoration: none;
-      /* removes the underline from links */
       transition: all 0.3s ease;
-      /* makes hover effects animate smoothly */
     }
 
     .nav-links a:hover {
       opacity: 0.6;
-      /* makes the link slightly see-through on hover */
-      color: rgb(14, 199, 60);
-      /* changes text to green on hover */
-      border: 1px solid white;
-      /* adds a white border around the link on hover */
+      color: #00f5d4;
+      /* CHANGED: was rgb(14,199,60) green, now cyan to match theme */
+      border: 1px solid #00f5d4;
+      /* CHANGED: was white border, now cyan border on hover */
       border-radius: 2px;
-      /* slightly rounds the hover border corners */
     }
 
-    /* ===== GREEN DIVIDER LINE ===== */
+    /* ===== CYAN DIVIDER LINE ===== */
     .line {
-      border: 2px solid green;
-      /* a solid green line */
+      border: 2px solid #00f5d4;
+      /* CHANGED: was green, now cyan to match accent color */
       border-radius: 3px;
-      /* slightly rounded ends on the line */
       width: 100%;
-      /* line stretches full width of the page */
     }
 
     /* ===== INTRO WRAPPER ===== */
     .intro-wrapper {
       display: flex;
-      /* places intro text and image side by side */
       justify-content: space-between;
-      /* pushes text to left and image to right */
       align-items: center;
-      /* vertically centers both items */
       margin: 40px 10px 10px 10px;
-      /* space outside (top: 40px, rest: 10px) */
       padding: 10px;
-      /* space inside the wrapper */
       gap: 20px;
-      /* space between the text and the image */
       flex-wrap: wrap;
-      /* stacks them on small screens */
     }
 
     /* ===== INTRO TEXT ===== */
     .intro {
       display: flex;
-      /* stacks the text lines vertically */
       flex-direction: column;
-      /* makes children go top to bottom */
-      border-left: 4px solid green;
-      /* green bar on the left side */
+      border-left: 4px solid #00f5d4;
+      /* CHANGED: was green, now cyan accent bar */
       padding-left: 20px;
-      /* space between the green bar and the text */
       flex: 1;
-      /* allows this section to grow and fill available space */
       min-width: 0;
-      /* allows it to shrink properly on small screens */
     }
 
     /* ===== BIG "Hi," TEXT ===== */
     .intro p {
-      color: green;
-      /* the "Hi," text is green */
+      color: #00f5d4;
+      /* CHANGED: was green, now cyan for the big greeting */
       font-size: clamp(32px, 10vw, 60px);
-      /* font scales with screen size, min 32px max 60px */
       font-weight: bolder;
-      /* makes the text very bold */
       margin: 10px;
-      /* space around the text */
     }
 
     /* ===== YOUR NAME ===== */
     .name {
       margin: 10px;
-      /* space around the name */
       font-size: clamp(14px, 4vw, 20px);
-      /* font scales with screen, min 14px max 20px */
       font-weight: bolder;
-      /* makes the name bold */
+      color: #ffffff;
+      /* CHANGED: now pure white so the name stands out boldly */
     }
 
     /* ===== TAGLINE ===== */
     .intro span {
-      color: rgb(6, 109, 15);
-      /* dark green color for the tagline */
+      color: #a0c4ff;
+      /* CHANGED: was dark green, now soft light blue for elegance */
       font-size: clamp(11px, 3vw, 15px);
-      /* scales with screen size, min 11px max 15px */
       margin: 10px;
-      /* space around the tagline */
       font-weight: bolder;
-      /* makes tagline bold */
       font-style: italic;
-      /* makes the tagline italic */
       line-height: 1.6;
-      /* adds space between lines of text */
     }
 
     /* ===== PROFILE IMAGE ===== */
     .profile-img {
       width: clamp(100px, 20vw, 200px);
-      /* image width scales with screen, min 100px max 200px */
       height: clamp(100px, 20vw, 200px);
-      /* image height matches width */
       object-fit: cover;
-      /* image fills the box without stretching */
       margin-right: clamp(0px, 5vw, 100px);
-      /* right spacing shrinks on small screens */
       flex-shrink: 0;
-      /* stops the image from shrinking too small */
     }
 
     /* ===== ABOUT ME SECTION ===== */
     .about {
-      background-color: black;
-      /* black background for the about section */
+      background-color: #0d0d1a;
+      /* CHANGED: was plain black, now deep navy black */
       margin: 10px;
-      /* space outside the section */
       margin-top: 30px;
-      /* extra space above the section */
       padding: 20px;
-      /* space inside the section */
-      border-left: 4px solid green;
-      /* green bar on the left */
+      border-left: 4px solid #00f5d4;
+      /* CHANGED: was green, now cyan accent bar */
     }
 
     .about h2 {
-      color: white;
-      /* heading text is white */
+      color: #ffffff;
+      /* CHANGED: stays white but now truly pure white heading */
       margin-bottom: 10px;
-      /* space below the heading */
     }
 
     .about p {
       margin: 10px;
-      /* space around the paragraph */
       margin-bottom: 10px;
-      /* extra space below the paragraph */
-      color: green;
-      /* paragraph text is green */
+      color: #a0c4ff;
+      /* CHANGED: was green, now soft light blue for readability */
       line-height: 1.6;
-      /* space between lines */
     }
 
     /* ===== SKILLS SECTION ===== */
     .skill {
       background: url("back.png");
-      /* background image for the skills section */
-      border-left: 4px solid green;
-      /* green bar on the left */
+      border-left: 4px solid #00f5d4;
+      /* CHANGED: was green, now cyan accent bar */
       padding: 20px;
-      /* space inside the section */
       margin: 10px;
-      /* space outside the section */
       margin-top: 30px;
-      /* extra space above the section */
     }
 
     .skill h1 {
-      color: green;
-      /* heading text is green */
+      color: #00f5d4;
+      /* CHANGED: was green, now cyan heading */
       font-size: 14px;
-      /* small font size for the heading */
       letter-spacing: 4px;
-      /* spreads the letters apart */
     }
 
     .skill ul {
       list-style: none;
-      /* removes bullet points */
       margin-top: 20px;
-      /* space above the list */
     }
 
     /* ===== EACH SKILL ITEM ===== */
     .skill li {
       padding: 10px 16px;
-      /* space inside each skill box */
-      border: 1px solid #222;
-      /* thin dark border around each skill */
+      border: 1px solid #1a1a2e;
+      /* CHANGED: was #222, now deep navy border */
       margin-bottom: 8px;
-      /* space between each skill item */
-      color: white;
-      /* skill text is white */
+      color: #eaeaea;
+      /* CHANGED: was white, now soft off-white */
       font-size: clamp(14px, 3vw, 18px);
-      /* font scales with screen size */
       font-weight: bolder;
-      /* makes skill text bold */
       border-radius: 4px;
-      /* slightly rounds the corners */
       transition: all 0.3s ease;
-      /* hover effects animate smoothly */
     }
 
     .skill li::before {
       content: "▹ ";
-      /* adds a green arrow before each skill */
-      color: green;
-      /* arrow is green */
+      color: #00f5d4;
+      /* CHANGED: was green, now cyan arrow */
     }
 
     .skill li:hover {
-      border-color: green;
-      /* border turns green on hover */
-      color: green;
-      /* text turns green on hover */
+      border-color: #00f5d4;
+      /* CHANGED: was green, now cyan border on hover */
+      color: #00f5d4;
+      /* CHANGED: was green, now cyan text on hover */
       cursor: default;
-      /* keeps the cursor as a normal arrow (not a pointer) */
     }
 
     /* ===== PROJECTS SECTION ===== */
     .projects {
-      background-color: rgb(6, 19, 77);
-      /* dark blue background for projects */
-      border-left: 4px solid green;
-      /* green bar on the left */
+      background-color: #0a0a1f;
+      /* CHANGED: was rgb(6,19,77) blue, now deeper richer navy */
+      border-left: 4px solid #00f5d4;
+      /* CHANGED: was green, now cyan accent bar */
       margin: 10px;
-      /* space outside the section */
       padding: 20px;
-      /* space inside the section */
       margin-top: 40px;
-      /* extra space above the section */
     }
 
     .projects h2 {
-      color: green;
-      /* heading is green */
+      color: #00f5d4;
+      /* CHANGED: was green, now cyan heading */
       font-family: Georgia, 'Times New Roman', Times, serif;
-      /* different font for this heading */
       margin-bottom: 10px;
-      /* space below the heading */
     }
 
     .projects ul {
       margin: 10px;
-      /* space around the list */
       list-style-type: none;
-      /* removes bullet points */
     }
 
     /* ===== EACH PROJECT ITEM ===== */
     .projects li {
       margin: 10px 0;
-      /* space above and below each project */
       padding: 10px;
-      /* space inside each project box */
-      border: 2px solid green;
-      /* green border around each project */
+      border: 2px solid #00f5d4;
+      /* CHANGED: was green, now cyan border */
       border-radius: 5px;
-      /* rounds the corners */
       transition: all 0.3s ease;
-      /* hover effects animate smoothly */
       font-size: clamp(13px, 2.5vw, 16px);
-      /* font scales with screen size */
       line-height: 1.5;
-      /* space between lines of text */
       word-break: break-word;
-      /* stops long words from overflowing the box */
     }
 
     .projects li::before {
       content: "$ ";
-      /* adds a dollar sign before each project (like a terminal) */
-      color: green;
-      /* dollar sign is green */
+      color: #00f5d4;
+      /* CHANGED: was green, now cyan dollar sign */
     }
 
     .projects li a {
-      color: blue;
-      /* project links are blue */
+      color: #a0c4ff;
+      /* CHANGED: was plain blue, now soft sky blue that fits the theme */
     }
 
     .projects li a:hover {
-      color: red;
-      /* link turns red on hover */
-      border: 3px solid red;
-      /* red border appears around link on hover */
+      color: #ff6b6b;
+      /* CHANGED: was red, now a softer coral red — less harsh */
+      border: 3px solid #ff6b6b;
+      /* CHANGED: was red, now matches the softer coral hover */
     }
 
     /* ===== FOOTER ===== */
     footer {
       display: flex;
-      /* uses flexbox for layout */
       flex-direction: column;
-      /* stacks items vertically */
       align-items: center;
-      /* centers everything horizontally */
       padding: 20px;
-      /* space inside the footer */
       margin-top: 30px;
-      /* space above the footer */
       text-align: center;
-      /* centers the text */
     }
 
     footer h2 {
-      color: rgb(94, 75, 75);
-      /* brownish color for the footer heading */
+      color: #a0c4ff;
+      /* CHANGED: was brownish rgb(94,75,75), now soft blue — more cohesive */
       margin-bottom: 10px;
-      /* space below the heading */
     }
 
     footer a {
-      color: green;
-      /* footer link is green */
+      color: #00f5d4;
+      /* CHANGED: was green, now cyan to match overall accent */
       text-decoration: none;
-      /* removes underline from the link */
       word-break: break-word;
-      /* stops long email from overflowing */
       text-align: center;
-      /* centers the link text */
     }
 
     footer a:hover {
-      color: red;
-      /* link turns red on hover */
+      color: #ff6b6b;
+      /* CHANGED: was red, now soft coral red on hover */
     }
 
     /* ===== SMALL PHONES (under 480px) ===== */
     @media (max-width: 480px) {
-      /* these styles ONLY apply when screen is 480px or smaller */
-
       .intro-wrapper {
         flex-direction: column;
-        /* stacks text and image vertically on phones */
         align-items: flex-start;
-        /* aligns items to the left */
       }
 
       .profile-img {
         margin-right: 0;
-        /* removes right margin on phones */
         align-self: center;
-        /* centers the image on phones */
       }
 
       nav {
         flex-direction: column;
-        /* stacks nav items vertically on phones */
         align-items: flex-start;
-        /* aligns nav items to the left */
       }
     }
   </style>
@@ -435,35 +325,35 @@
 
   <!-- NAVIGATION BAR -->
   <nav>
-    <div class="hero">Dehinbo Titus</div> <!-- logo/name badge on the left -->
+    <div class="hero">Dehinbo Titus</div>
     <ul class="nav-links">
-      <li><a href="#">Home</a></li> <!-- home link -->
-      <li><a href="#">About</a></li> <!-- about link -->
-      <li><a href="#">Contact</a></li> <!-- contact link -->
+      <li><a href="#">Home</a></li>
+      <li><a href="#">About</a></li>
+      <li><a href="#">Contact</a></li>
     </ul>
   </nav>
 
-  <!-- GREEN DIVIDER LINE -->
-  <div class="line"></div> <!-- decorative green line below nav -->
+  <!-- CYAN DIVIDER LINE -->
+  <div class="line"></div>
 
   <!-- INTRO SECTION -->
   <div class="intro-wrapper">
     <div class="intro">
-      <p>Hi,</p> <!-- big green greeting text -->
-      <div class="name">I'm Dehinbo Titus.</div> <!-- your name -->
+      <p>Hi,</p>
+      <div class="name">I'm Dehinbo Titus.</div>
       <span>I enjoy turning ideas into interactive websites and continuously improving my skills in web
-        development.</span> <!-- short tagline about yourself -->
+        development.</span>
     </div>
-    <img class="profile-img" src="remove.png" alt="profile image"> <!-- your profile photo -->
+    <img class="profile-img" src="remove.png" alt="profile image">
   </div>
 
   <!-- ABOUT ME SECTION -->
   <section>
     <div class="about">
-      <h2>About Me</h2> <!-- section heading -->
+      <h2>About Me</h2>
       <p>
         I am a frontend developer learning how to build modern and responsive websites
-        using HTML, CSS, and JavaScript. <!-- short description about yourself -->
+        using HTML, CSS, and JavaScript.
       </p>
     </div>
   </section>
@@ -471,11 +361,11 @@
   <!-- SKILLS SECTION -->
   <section>
     <div class="skill">
-      <h1>SKILLS ACQUIRED</h1> <!-- section heading -->
+      <h1>SKILLS ACQUIRED</h1>
       <ul>
-        <li>HTML</li> <!-- skill 1 -->
-        <li>CSS</li> <!-- skill 2 -->
-        <li>A little bit of JavaScript</li> <!-- skill 3 -->
+        <li>HTML</li>
+        <li>CSS</li>
+        <li>A little bit of JavaScript</li>
       </ul>
     </div>
   </section>
@@ -483,17 +373,16 @@
   <!-- PROJECTS SECTION -->
   <section>
     <div class="projects">
-      <h2>Projects</h2> <!-- section heading -->
+      <h2>Projects</h2>
       <ul>
         <li>Rock Paper Scissors Game: A simple game built with JavaScript, HTML and CSS.
-          <a href="https://rockpaperscissorsbytt.netlify.app/">View Project</a> <!-- link to live project -->
+          <a href="https://rockpaperscissorsbytt.netlify.app/">View Project</a>
         </li>
         <li>Music Landing Page: A modern website layout for a music platform.
-          <a href="#">still working on it</a> <!-- placeholder link -->
+          <a href="#">still working on it</a>
         </li>
         <li>A minor Calculator project
           <a href="https://titus12345-dehinbo.github.io/quick-calculator/">view project</a>
-          <!-- link to live project -->
         </li>
       </ul>
     </div>
@@ -501,8 +390,8 @@
 
   <!-- FOOTER / CONTACT -->
   <footer>
-    <h2>Contact Me @</h2> <!-- footer heading -->
-    <a href="#">Email: dehinbotitus@gmail.com | | phonenumber: 08053950665</a> <!-- contact details -->
+    <h2>Contact Me @</h2>
+    <a href="#">Email: dehinbotitus@gmail.com | | phonenumber: 08053950665</a>
   </footer>
 
 </body>
