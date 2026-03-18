@@ -5,11 +5,13 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Dehinbo Titus — Frontend Developer</title>
+  <!-- Google Fonts -->
   <link
     href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Mono:wght@300;400;500&family=DM+Sans:wght@300;400;500&display=swap"
     rel="stylesheet">
 
   <style>
+    /* Reset all default browser styles */
     *,
     *::before,
     *::after {
@@ -18,10 +20,12 @@
       box-sizing: border-box;
     }
 
+    /* Smooth scroll */
     html {
       scroll-behavior: smooth;
     }
 
+    /* Page background and font */
     body {
       background: #07070f;
       font-family: 'DM Sans', sans-serif;
@@ -29,7 +33,18 @@
       overflow-x: hidden;
     }
 
-    /* ── NAV ── */
+    /* Grain texture over the whole page */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+      opacity: 0.03;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* Fixed nav at the top */
     nav {
       position: fixed;
       top: 0;
@@ -46,6 +61,7 @@
       border-bottom: 1px solid rgba(0, 245, 212, 0.07);
     }
 
+    /* Name badge in the nav */
     .logo {
       font-family: 'DM Mono', monospace;
       font-size: clamp(9px, 2.2vw, 13px);
@@ -58,6 +74,7 @@
       white-space: nowrap;
     }
 
+    /* Nav links row */
     .nav-links {
       list-style: none;
       display: flex;
@@ -65,6 +82,7 @@
       gap: clamp(2px, 1.5vw, 18px);
     }
 
+    /* Each nav link */
     .nav-links a {
       font-family: 'DM Mono', monospace;
       font-size: clamp(8.5px, 1.8vw, 11.5px);
@@ -79,25 +97,27 @@
       border: 1px solid transparent;
     }
 
+    /* Nav link on hover and when active */
     .nav-links a:hover,
     .nav-links a.active {
       color: #00f5d4;
       border-color: rgba(0, 245, 212, 0.2);
     }
 
-    /* ── PAGES ── */
+    /* All pages hidden by default */
     .page {
       display: none;
       min-height: 100vh;
       width: 100%;
     }
 
+    /* Active page is shown */
     .page.active {
       display: flex;
       flex-direction: column;
     }
 
-    /* ── HOME ── */
+    /* Home page centers content vertically */
     #home {
       align-items: center;
       justify-content: center;
@@ -106,6 +126,7 @@
       overflow: hidden;
     }
 
+    /* Glow effect top right on home */
     #home::before {
       content: '';
       position: absolute;
@@ -117,6 +138,7 @@
       pointer-events: none;
     }
 
+    /* Text and image side by side */
     .home-inner {
       display: flex;
       align-items: center;
@@ -128,11 +150,13 @@
       padding: clamp(20px, 6vw, 60px) 0;
     }
 
+    /* Text takes remaining space */
     .home-text {
       flex: 1;
       min-width: 0;
     }
 
+    /* Small label above the name */
     .home-eyebrow {
       font-family: 'DM Mono', monospace;
       font-size: clamp(8px, 1.8vw, 11px);
@@ -143,6 +167,7 @@
       animation: up 0.7s ease both 0.1s;
     }
 
+    /* Big name heading */
     .home-name {
       font-family: 'Playfair Display', serif;
       font-size: clamp(2rem, 7.5vw, 5.2rem);
@@ -153,11 +178,13 @@
       animation: up 0.7s ease both 0.22s;
     }
 
+    /* Cyan italic part of the name */
     .home-name span {
       color: #00f5d4;
       font-style: italic;
     }
 
+    /* Short description */
     .home-sub {
       font-size: clamp(0.72rem, 2vw, 0.97rem);
       color: #8899cc;
@@ -167,6 +194,7 @@
       max-width: 440px;
     }
 
+    /* Button row */
     .home-btns {
       display: flex;
       gap: 10px;
@@ -174,6 +202,7 @@
       animation: up 0.7s ease both 0.46s;
     }
 
+    /* Filled button */
     .btn-primary {
       font-family: 'DM Mono', monospace;
       font-size: clamp(8px, 1.7vw, 10.5px);
@@ -194,6 +223,7 @@
       opacity: 0.85;
     }
 
+    /* Outlined button */
     .btn-outline {
       font-family: 'DM Mono', monospace;
       font-size: clamp(8px, 1.7vw, 10.5px);
@@ -214,13 +244,14 @@
       background: rgba(0, 245, 212, 0.07);
     }
 
-    /* Profile image */
+    /* Profile image stays on the right */
     .home-img {
       flex-shrink: 0;
       position: relative;
       animation: fadeIn 0.9s ease both 0.3s;
     }
 
+    /* Profile photo */
     .home-img img {
       width: clamp(80px, 18vw, 220px);
       height: clamp(80px, 18vw, 220px);
@@ -232,6 +263,7 @@
       z-index: 1;
     }
 
+    /* First ring around photo */
     .home-img::before {
       content: '';
       position: absolute;
@@ -241,6 +273,7 @@
       z-index: 0;
     }
 
+    /* Second ring around photo */
     .home-img::after {
       content: '';
       position: absolute;
@@ -250,7 +283,7 @@
       z-index: 0;
     }
 
-    /* Scroll hint */
+    /* Scroll hint text at the bottom of home */
     .scroll-hint {
       font-family: 'DM Mono', monospace;
       font-size: 9px;
@@ -262,7 +295,7 @@
       animation: up 1s ease both 0.8s;
     }
 
-    /* ── INNER PAGES ── */
+    /* Inner content wrapper for all pages except home */
     .page-wrap {
       flex: 1;
       width: 100%;
@@ -272,7 +305,7 @@
       animation: up 0.45s ease both;
     }
 
-    /* Section tag */
+    /* Small label above section title */
     .stag {
       font-family: 'DM Mono', monospace;
       font-size: clamp(8px, 1.6vw, 10px);
@@ -285,6 +318,7 @@
       margin-bottom: 10px;
     }
 
+    /* Short line after the tag */
     .stag::after {
       content: '';
       height: 1px;
@@ -301,19 +335,20 @@
       margin-bottom: clamp(20px, 4vw, 36px);
     }
 
+    /* Cyan italic used inside headings */
     .stitle em {
       color: #00f5d4;
       font-style: italic;
     }
 
-    /* Divider */
+    /* Thin glowing divider line */
     .div-line {
       height: 1px;
       background: linear-gradient(90deg, transparent, rgba(0, 245, 212, 0.2), transparent);
       margin: clamp(18px, 3vw, 28px) 0;
     }
 
-    /* ── ABOUT ── */
+    /* About paragraph text */
     .about-body {
       font-size: clamp(0.84rem, 2.1vw, 1.02rem);
       color: #8899cc;
@@ -322,18 +357,20 @@
       max-width: 660px;
     }
 
+    /* Highlighted word in about text */
     .about-body strong {
       color: #00f5d4;
       font-weight: 500;
     }
 
-    /* ── SKILLS ── */
+    /* Skills responsive grid */
     .skills-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(clamp(110px, 22vw, 170px), 1fr));
       gap: clamp(8px, 2vw, 14px);
     }
 
+    /* Each skill box */
     .skill-card {
       background: #0d0d1c;
       border: 1px solid rgba(0, 245, 212, 0.09);
@@ -346,12 +383,14 @@
       cursor: default;
     }
 
+    /* Skill card lifts on hover */
     .skill-card:hover {
       border-color: #00f5d4;
       background: rgba(0, 245, 212, 0.05);
       transform: translateY(-3px);
     }
 
+    /* Cyan dot inside skill card */
     .skill-dot {
       width: 6px;
       height: 6px;
@@ -360,24 +399,26 @@
       flex-shrink: 0;
     }
 
+    /* Skill name */
     .skill-label {
       font-family: 'DM Mono', monospace;
       font-size: clamp(0.64rem, 1.8vw, 0.8rem);
       color: #eee;
     }
 
-    /* ── PROJECTS ── */
+    /* Projects stacked in a column */
     .proj-list {
       display: flex;
       flex-direction: column;
       gap: clamp(10px, 2vw, 16px);
     }
 
+    /* Each project row */
     .proj-card {
       background: #0d0d1c;
       border: 1px solid rgba(0, 245, 212, 0.09);
       border-radius: 10px;
-      padding: clamp(14px, 3vw, 24px) clamp(14px, 3vw, 24px);
+      padding: clamp(14px, 3vw, 24px);
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -385,17 +426,20 @@
       transition: border-color 0.25s, background 0.25s, transform 0.25s;
     }
 
+    /* Project card slides right on hover */
     .proj-card:hover {
       border-color: rgba(0, 245, 212, 0.32);
       background: #111120;
       transform: translateX(5px);
     }
 
+    /* Project text takes remaining space */
     .proj-info {
       flex: 1;
       min-width: 0;
     }
 
+    /* Project number */
     .proj-num {
       font-family: 'DM Mono', monospace;
       font-size: clamp(7.5px, 1.5vw, 9.5px);
@@ -404,6 +448,7 @@
       margin-bottom: 4px;
     }
 
+    /* Project title */
     .proj-name {
       font-family: 'Playfair Display', serif;
       font-size: clamp(0.92rem, 2.8vw, 1.22rem);
@@ -411,6 +456,7 @@
       margin-bottom: 4px;
     }
 
+    /* Project description */
     .proj-desc {
       font-size: clamp(0.7rem, 1.8vw, 0.84rem);
       color: #8899cc;
@@ -418,6 +464,7 @@
       font-weight: 300;
     }
 
+    /* View project button */
     .proj-btn {
       font-family: 'DM Mono', monospace;
       font-size: clamp(7.5px, 1.5vw, 9.5px);
@@ -436,13 +483,14 @@
       border-color: #00f5d4;
     }
 
+    /* Disabled button for work in progress */
     .proj-btn.wip {
       color: #3a3a55;
       border-color: rgba(60, 60, 85, 0.4);
       pointer-events: none;
     }
 
-    /* ── CONTACT ── */
+    /* Contact intro text */
     .contact-intro {
       font-family: 'DM Mono', monospace;
       font-size: clamp(9px, 1.8vw, 11px);
@@ -451,12 +499,14 @@
       margin-bottom: 20px;
     }
 
+    /* Contact cards stacked */
     .contact-list {
       display: flex;
       flex-direction: column;
       gap: 10px;
     }
 
+    /* Each contact card */
     .contact-row {
       display: flex;
       align-items: center;
@@ -469,12 +519,14 @@
       transition: border-color 0.25s, background 0.25s, transform 0.25s;
     }
 
+    /* Contact card slides on hover */
     .contact-row:hover {
       border-color: #00f5d4;
       background: rgba(0, 245, 212, 0.04);
       transform: translateX(4px);
     }
 
+    /* Label like Email or Phone */
     .contact-tag {
       font-family: 'DM Mono', monospace;
       font-size: clamp(8px, 1.6vw, 10px);
@@ -485,6 +537,7 @@
       min-width: 44px;
     }
 
+    /* Contact value like email address */
     .contact-val {
       font-family: 'DM Mono', monospace;
       font-size: clamp(0.62rem, 1.8vw, 0.78rem);
@@ -492,7 +545,7 @@
       word-break: break-all;
     }
 
-    /* ── FOOTER ── */
+    /* Footer copyright text */
     .footer {
       text-align: center;
       padding: clamp(16px, 3vw, 24px) 5vw;
@@ -503,7 +556,7 @@
       letter-spacing: 0.12em;
     }
 
-    /* ── ANIMATIONS ── */
+    /* Slide up fade animation */
     @keyframes up {
       from {
         opacity: 0;
@@ -516,6 +569,7 @@
       }
     }
 
+    /* Simple fade in animation */
     @keyframes fadeIn {
       from {
         opacity: 0;
@@ -530,7 +584,7 @@
 
 <body>
 
-  <!-- NAV -->
+  <!-- Nav bar -->
   <nav>
     <div class="logo">Dehinbo Titus</div>
     <ul class="nav-links">
@@ -542,9 +596,11 @@
     </ul>
   </nav>
 
-  <!-- HOME -->
+  <!-- Home page -->
   <section class="page active" id="home">
     <div class="home-inner">
+
+      <!-- Left side text -->
       <div class="home-text">
         <div class="home-eyebrow">// Frontend Developer</div>
         <h1 class="home-name">Dehinbo<br><span>Titus.</span></h1>
@@ -557,14 +613,18 @@
             onclick="go('contact', document.querySelectorAll('.nav-links a')[4]); return false;">Contact Me</a>
         </div>
       </div>
+
+      <!-- Right side image -->
       <div class="home-img">
         <img src="remove.png" alt="Dehinbo Titus">
       </div>
+
     </div>
+    <!-- Scroll hint at the bottom -->
     <div class="scroll-hint">scroll to explore</div>
   </section>
 
-  <!-- ABOUT -->
+  <!-- About page -->
   <section class="page" id="about">
     <div class="page-wrap">
       <div class="stag">01 — About</div>
@@ -584,7 +644,7 @@
     <div class="footer">© 2025 Dehinbo Titus</div>
   </section>
 
-  <!-- SKILLS -->
+  <!-- Skills page -->
   <section class="page" id="skills">
     <div class="page-wrap">
       <div class="stag">02 — Skills</div>
@@ -613,7 +673,7 @@
     <div class="footer">© 2025 Dehinbo Titus</div>
   </section>
 
-  <!-- PROJECTS -->
+  <!-- Projects page -->
   <section class="page" id="projects">
     <div class="page-wrap">
       <div class="stag">03 — Projects</div>
@@ -652,36 +712,41 @@
     <div class="footer">© 2025 Dehinbo Titus</div>
   </section>
 
-  <!-- CONTACT -->
+  <!-- Contact page -->
   <section class="page" id="contact">
     <div class="page-wrap">
       <div class="stag">04 — Contact</div>
       <h2 class="stitle">Let's <em>Connect.</em></h2>
       <p class="contact-intro">Feel free to reach out anytime.</p>
       <div class="contact-list">
+
+        <!-- Email card -->
         <a class="contact-row" href="mailto:dehinbotitus@gmail.com">
           <span class="contact-tag">Email</span>
           <span class="contact-val">dehinbotitus@gmail.com</span>
         </a>
+
+        <!-- Phone card -->
         <a class="contact-row" href="tel:08053950665">
           <span class="contact-tag">Phone</span>
           <span class="contact-val">08053950665</span>
         </a>
+
       </div>
     </div>
     <div class="footer">© 2025 Dehinbo Titus</div>
   </section>
 
   <script>
-    // Switch to a page when nav is clicked
+    // Switch pages when a nav link is clicked
     function go(id, link) {
       // Hide all pages
       document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
       // Remove active from all nav links
       document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
-      // Show the target page
+      // Show selected page
       document.getElementById(id).classList.add('active');
-      // Highlight the nav link
+      // Highlight clicked nav link
       if (link) link.classList.add('active');
       // Scroll to top
       window.scrollTo(0, 0);
