@@ -43,10 +43,7 @@
       z-index: 0;
     }
 
-    /* ── NAV ──
-       Two rows on mobile: logo on top, links on bottom
-       One row on desktop
-    */
+    /* Nav — two rows on mobile, one row on desktop */
     nav {
       position: fixed;
       top: 0;
@@ -59,16 +56,16 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      padding: 8px 4vw 6px;
+      padding: 8px 4vw 7px;
       gap: 6px;
     }
 
     /* Name badge */
     .logo {
       font-family: 'DM Mono', monospace;
-      font-size: clamp(9px, 2.5vw, 13px);
+      font-size: 11px;
       color: #00f5d4;
-      letter-spacing: 0.14em;
+      letter-spacing: 0.12em;
       text-transform: uppercase;
       border: 1px solid rgba(0, 245, 212, 0.28);
       padding: 3px 10px;
@@ -76,26 +73,25 @@
       white-space: nowrap;
     }
 
-    /* Nav links always in one row, centered */
+    /* Nav links row */
     .nav-links {
       list-style: none;
       display: flex;
       align-items: center;
       justify-content: center;
-      flex-wrap: nowrap;
-      gap: 0;
       width: 100%;
+      gap: 2px;
     }
 
     /* Each nav link */
     .nav-links a {
       font-family: 'DM Mono', monospace;
-      font-size: clamp(8px, 2.2vw, 11px);
+      font-size: 10px;
       color: #555570;
       text-decoration: none;
       text-transform: uppercase;
-      letter-spacing: 0.06em;
-      padding: 4px 5px;
+      letter-spacing: 0.07em;
+      padding: 4px 7px;
       border-radius: 3px;
       white-space: nowrap;
       transition: color 0.2s;
@@ -103,7 +99,7 @@
       display: block;
     }
 
-    /* Active and hovered nav link */
+    /* Active and hovered link */
     .nav-links a:hover,
     .nav-links a.active {
       color: #00f5d4;
@@ -117,7 +113,7 @@
       width: 100%;
     }
 
-    /* Active page shown */
+    /* Active page visible */
     .page.active {
       display: flex;
       flex-direction: column;
@@ -127,13 +123,12 @@
     #home {
       align-items: center;
       justify-content: center;
-      /* top padding accounts for two-row nav height */
-      padding: 90px 5vw 20px;
+      padding: 95px 18px 24px;
       position: relative;
       overflow: hidden;
     }
 
-    /* Glow top right */
+    /* Glow */
     #home::before {
       content: '';
       position: absolute;
@@ -145,20 +140,19 @@
       pointer-events: none;
     }
 
-    /* Text and image side by side — NEVER stacks */
+    /* Text and image always side by side */
     .home-inner {
       display: flex;
       flex-direction: row;
       align-items: center;
       justify-content: space-between;
-      gap: clamp(12px, 3vw, 60px);
+      gap: 16px;
       width: 100%;
       max-width: 980px;
       margin: 0 auto;
-      padding: clamp(10px, 4vw, 50px) 0;
     }
 
-    /* Text side */
+    /* Text takes remaining space */
     .home-text {
       flex: 1;
       min-width: 0;
@@ -167,42 +161,42 @@
     /* Small label */
     .home-eyebrow {
       font-family: 'DM Mono', monospace;
-      font-size: clamp(7.5px, 1.8vw, 11px);
+      font-size: 10px;
       color: #00f5d4;
-      letter-spacing: 0.2em;
+      letter-spacing: 0.16em;
       text-transform: uppercase;
-      margin-bottom: clamp(6px, 1.5vw, 14px);
+      margin-bottom: 8px;
       animation: up 0.7s ease both 0.1s;
     }
 
-    /* Big name */
+    /* Name — readable on all screens */
     .home-name {
       font-family: 'Playfair Display', serif;
-      font-size: clamp(1.7rem, 6.5vw, 5rem);
+      font-size: clamp(1.55rem, 5.5vw, 4.8rem);
       font-weight: 700;
-      line-height: 1.04;
+      line-height: 1.06;
       color: #fff;
-      margin-bottom: clamp(8px, 1.5vw, 16px);
+      margin-bottom: 10px;
       animation: up 0.7s ease both 0.22s;
       word-break: break-word;
     }
 
-    /* Cyan italic name */
+    /* Cyan italic */
     .home-name span {
       color: #00f5d4;
       font-style: italic;
     }
 
-    /* Tagline */
+    /* Tagline — comfortable reading size */
     .home-sub {
-      font-size: clamp(0.68rem, 1.8vw, 0.95rem);
+      font-size: clamp(0.75rem, 1.8vw, 0.95rem);
       color: #8899cc;
       line-height: 1.7;
-      margin-bottom: clamp(16px, 3vw, 30px);
+      margin-bottom: 18px;
       animation: up 0.7s ease both 0.34s;
     }
 
-    /* Button row */
+    /* Buttons row */
     .home-btns {
       display: flex;
       gap: 8px;
@@ -213,13 +207,13 @@
     /* Filled button */
     .btn-primary {
       font-family: 'DM Mono', monospace;
-      font-size: clamp(7.5px, 1.6vw, 10.5px);
-      letter-spacing: 0.14em;
+      font-size: 10px;
+      letter-spacing: 0.13em;
       text-transform: uppercase;
       color: #07070f;
       background: #00f5d4;
       border: none;
-      padding: clamp(8px, 1.5vw, 13px) clamp(14px, 2.5vw, 24px);
+      padding: 9px 16px;
       border-radius: 4px;
       cursor: pointer;
       transition: opacity 0.2s;
@@ -234,13 +228,13 @@
     /* Outlined button */
     .btn-outline {
       font-family: 'DM Mono', monospace;
-      font-size: clamp(7.5px, 1.6vw, 10.5px);
-      letter-spacing: 0.14em;
+      font-size: 10px;
+      letter-spacing: 0.13em;
       text-transform: uppercase;
       color: #00f5d4;
       background: transparent;
       border: 1px solid rgba(0, 245, 212, 0.4);
-      padding: clamp(8px, 1.5vw, 13px) clamp(14px, 2.5vw, 24px);
+      padding: 9px 16px;
       border-radius: 4px;
       cursor: pointer;
       transition: background 0.2s;
@@ -252,17 +246,17 @@
       background: rgba(0, 245, 212, 0.07);
     }
 
-    /* Image stays right, never drops */
+    /* Image stays right */
     .home-img {
       flex-shrink: 0;
       position: relative;
       animation: fadeIn 0.9s ease both 0.3s;
     }
 
-    /* Profile photo */
+    /* Profile photo — good size on all screens */
     .home-img img {
-      width: clamp(72px, 17vw, 210px);
-      height: clamp(72px, 17vw, 210px);
+      width: clamp(80px, 19vw, 210px);
+      height: clamp(80px, 19vw, 210px);
       border-radius: 12px;
       object-fit: cover;
       display: block;
@@ -296,30 +290,29 @@
       font-family: 'DM Mono', monospace;
       font-size: 9px;
       color: #2e2e44;
-      letter-spacing: 0.2em;
+      letter-spacing: 0.18em;
       text-transform: uppercase;
       text-align: center;
-      padding: 16px 0 20px;
+      padding: 18px 0 20px;
       animation: up 1s ease both 0.8s;
     }
 
-    /* ── INNER PAGES ── */
+    /* Inner pages content wrapper */
     .page-wrap {
       flex: 1;
       width: 100%;
       max-width: 920px;
       margin: 0 auto;
-      /* top padding accounts for two-row nav */
-      padding: clamp(90px, 14vw, 110px) 5vw clamp(36px, 6vw, 60px);
+      padding: 100px 18px 44px;
       animation: up 0.4s ease both;
     }
 
     /* Section small tag */
     .stag {
       font-family: 'DM Mono', monospace;
-      font-size: clamp(8px, 1.6vw, 10px);
+      font-size: 9px;
       color: #00f5d4;
-      letter-spacing: 0.26em;
+      letter-spacing: 0.24em;
       text-transform: uppercase;
       display: flex;
       align-items: center;
@@ -331,17 +324,17 @@
     .stag::after {
       content: '';
       height: 1px;
-      width: 55px;
+      width: 50px;
       background: rgba(0, 245, 212, 0.18);
     }
 
-    /* Section heading */
+    /* Section heading — big enough to read, not too big */
     .stitle {
       font-family: 'Playfair Display', serif;
-      font-size: clamp(1.4rem, 5vw, 2.7rem);
+      font-size: clamp(1.4rem, 4.5vw, 2.6rem);
       font-weight: 700;
       color: #fff;
-      margin-bottom: clamp(18px, 4vw, 34px);
+      margin-bottom: 22px;
     }
 
     /* Cyan italic in heading */
@@ -350,18 +343,18 @@
       font-style: italic;
     }
 
-    /* Divider line */
+    /* Divider */
     .div-line {
       height: 1px;
       background: linear-gradient(90deg, transparent, rgba(0, 245, 212, 0.2), transparent);
-      margin: clamp(16px, 3vw, 26px) 0;
+      margin: 20px 0;
     }
 
-    /* About text */
+    /* About text — comfortable reading size */
     .about-body {
-      font-size: clamp(0.82rem, 2vw, 1rem);
+      font-size: clamp(0.85rem, 1.9vw, 1rem);
       color: #8899cc;
-      line-height: 1.88;
+      line-height: 1.85;
       font-weight: 300;
       max-width: 660px;
     }
@@ -375,8 +368,8 @@
     /* Skills grid */
     .skills-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(clamp(100px, 20vw, 165px), 1fr));
-      gap: clamp(8px, 2vw, 13px);
+      grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+      gap: 10px;
     }
 
     /* Skill card */
@@ -384,7 +377,7 @@
       background: #0d0d1c;
       border: 1px solid rgba(0, 245, 212, 0.09);
       border-radius: 8px;
-      padding: clamp(11px, 2.2vw, 17px) clamp(11px, 2.2vw, 18px);
+      padding: 13px 15px;
       display: flex;
       align-items: center;
       gap: 10px;
@@ -410,7 +403,7 @@
     /* Skill name */
     .skill-label {
       font-family: 'DM Mono', monospace;
-      font-size: clamp(0.62rem, 1.7vw, 0.78rem);
+      font-size: clamp(0.7rem, 1.6vw, 0.8rem);
       color: #eee;
     }
 
@@ -418,7 +411,7 @@
     .proj-list {
       display: flex;
       flex-direction: column;
-      gap: clamp(9px, 2vw, 14px);
+      gap: 11px;
     }
 
     /* Project card */
@@ -426,11 +419,11 @@
       background: #0d0d1c;
       border: 1px solid rgba(0, 245, 212, 0.09);
       border-radius: 10px;
-      padding: clamp(13px, 2.5vw, 22px);
+      padding: 15px 14px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: clamp(10px, 2vw, 22px);
+      gap: 12px;
       transition: border-color 0.25s, background 0.25s, transform 0.25s;
     }
 
@@ -449,23 +442,23 @@
     /* Project number */
     .proj-num {
       font-family: 'DM Mono', monospace;
-      font-size: clamp(7px, 1.4vw, 9px);
+      font-size: 9px;
       color: #444460;
-      letter-spacing: 0.13em;
+      letter-spacing: 0.12em;
       margin-bottom: 4px;
     }
 
     /* Project name */
     .proj-name {
       font-family: 'Playfair Display', serif;
-      font-size: clamp(0.9rem, 2.6vw, 1.2rem);
+      font-size: clamp(0.92rem, 2.4vw, 1.2rem);
       color: #fff;
       margin-bottom: 4px;
     }
 
     /* Project description */
     .proj-desc {
-      font-size: clamp(0.68rem, 1.7vw, 0.82rem);
+      font-size: clamp(0.72rem, 1.6vw, 0.84rem);
       color: #8899cc;
       line-height: 1.55;
       font-weight: 300;
@@ -474,11 +467,11 @@
     /* View button */
     .proj-btn {
       font-family: 'DM Mono', monospace;
-      font-size: clamp(7px, 1.4vw, 9.5px);
+      font-size: 9px;
       color: #00f5d4;
       text-decoration: none;
       border: 1px solid rgba(0, 245, 212, 0.28);
-      padding: clamp(5px, 1.1vw, 8px) clamp(9px, 1.8vw, 14px);
+      padding: 6px 11px;
       border-radius: 4px;
       white-space: nowrap;
       flex-shrink: 0;
@@ -490,7 +483,7 @@
       border-color: #00f5d4;
     }
 
-    /* Disabled wip button */
+    /* Disabled wip */
     .proj-btn.wip {
       color: #3a3a55;
       border-color: rgba(60, 60, 85, 0.4);
@@ -500,7 +493,7 @@
     /* Contact intro */
     .contact-intro {
       font-family: 'DM Mono', monospace;
-      font-size: clamp(8.5px, 1.7vw, 11px);
+      font-size: 10px;
       color: #444460;
       letter-spacing: 0.1em;
       margin-bottom: 18px;
@@ -521,7 +514,7 @@
       background: #0d0d1c;
       border: 1px solid rgba(0, 245, 212, 0.09);
       border-radius: 8px;
-      padding: clamp(12px, 2.2vw, 17px) clamp(13px, 2.5vw, 20px);
+      padding: 14px 16px;
       text-decoration: none;
       transition: border-color 0.25s, background 0.25s, transform 0.25s;
     }
@@ -532,21 +525,21 @@
       transform: translateX(4px);
     }
 
-    /* Email / Phone label */
+    /* Label */
     .contact-tag {
       font-family: 'DM Mono', monospace;
-      font-size: clamp(7.5px, 1.5vw, 10px);
+      font-size: 9px;
       color: #00f5d4;
       text-transform: uppercase;
       letter-spacing: 0.1em;
       flex-shrink: 0;
-      min-width: 42px;
+      min-width: 40px;
     }
 
-    /* Contact value */
+    /* Value */
     .contact-val {
       font-family: 'DM Mono', monospace;
-      font-size: clamp(0.6rem, 1.7vw, 0.76rem);
+      font-size: clamp(0.65rem, 1.6vw, 0.76rem);
       color: #8899cc;
       word-break: break-all;
     }
@@ -554,10 +547,10 @@
     /* Footer */
     .footer {
       text-align: center;
-      padding: clamp(14px, 2.5vw, 22px) 5vw;
+      padding: 16px 18px;
       border-top: 1px solid rgba(0, 245, 212, 0.06);
       font-family: 'DM Mono', monospace;
-      font-size: clamp(7.5px, 1.4vw, 10px);
+      font-size: 9px;
       color: #2e2e44;
       letter-spacing: 0.12em;
     }
@@ -585,23 +578,30 @@
       }
     }
 
-    /* ── DESKTOP: nav goes back to one row ── */
+    /* Desktop — single row nav */
     @media (min-width: 700px) {
       nav {
         flex-direction: row;
         justify-content: space-between;
-        align-items: center;
         height: 56px;
         padding: 0 5vw;
         gap: 0;
       }
 
       #home {
-        padding: 76px 5vw 20px;
+        padding: 76px 5vw 24px;
       }
 
       .page-wrap {
-        padding: clamp(76px, 10vw, 100px) 5vw clamp(36px, 6vw, 60px);
+        padding: 80px 5vw 50px;
+      }
+
+      .nav-links a {
+        font-size: 11px;
+      }
+
+      .logo {
+        font-size: 12px;
       }
     }
   </style>
@@ -757,7 +757,7 @@
   </section>
 
   <script>
-    // Switch pages when nav is clicked
+    /* Switch pages when nav is clicked */
     function go(id, link) {
       document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
       document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
