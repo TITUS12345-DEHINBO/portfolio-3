@@ -4,392 +4,689 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Dehinbo Titus | Frontend Developer</title>
+  <title>Dehinbo Titus — Frontend Developer</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Mono:wght@300;400;500&family=DM+Sans:wght@300;400;500&display=swap"
+    rel="stylesheet">
 
   <style>
-    /* ===== RESET ===== */
-    /* ===== RESET ===== */
-    * {
-      padding: 0;
+    *,
+    *::before,
+    *::after {
       margin: 0;
+      padding: 0;
       box-sizing: border-box;
-      max-width: 100%;
-      /* ADDED: every single element can never be wider than the screen */
     }
 
     html {
-      overflow-x: hidden;
-      /* ADDED: locks horizontal scroll on the html element itself */
+      scroll-behavior: smooth;
     }
 
     body {
-      background-color: black;
-      width: 100%;
-      min-height: 100vh;
+      background: #07070f;
+      font-family: 'DM Sans', sans-serif;
+      color: #f0f0f0;
       overflow-x: hidden;
-      /* this was already here, now html + body both block it */
-      font-family: 'Raleway', sans-serif;
-      color: #eaeaea;
-      position: relative;
-      /* ADDED: keeps everything contained inside body */
     }
 
-    /* ===== NAVIGATION ===== */
+    /* ── NAV ── */
     nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 999;
+      height: 56px;
       display: flex;
-      justify-content: space-between;
       align-items: center;
-      padding: clamp(6px, 2vw, 16px) clamp(8px, 3vw, 24px);
-      border-bottom: 1px solid #1a1a2e;
-      width: 100%;
-      /* CHANGED: nav never overflows screen width */
+      justify-content: space-between;
+      padding: 0 5vw;
+      background: rgba(7, 7, 15, 0.96);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(0, 245, 212, 0.07);
     }
 
-    /* ===== LOGO BADGE ===== */
-    .hero {
+    .logo {
+      font-family: 'DM Mono', monospace;
+      font-size: clamp(9px, 2.2vw, 13px);
       color: #00f5d4;
-      border: 1px dashed #00f5d4;
-      border-radius: 10px;
-      padding: clamp(3px, 1vw, 8px) clamp(6px, 2vw, 16px);
-      background-color: #0d0d0d;
-      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      border: 1px solid rgba(0, 245, 212, 0.28);
+      padding: 4px 10px;
+      border-radius: 4px;
       white-space: nowrap;
-      font-size: clamp(9px, 2.8vw, 16px);
-      /* shrinks to fit small screens */
     }
 
-    /* ===== NAV LINKS ===== */
     .nav-links {
-      display: flex;
-      gap: clamp(4px, 1.5vw, 16px);
-      /* gap shrinks on small screens */
       list-style: none;
+      display: flex;
+      align-items: center;
+      gap: clamp(2px, 1.5vw, 18px);
     }
 
     .nav-links a {
-      color: #eaeaea;
+      font-family: 'DM Mono', monospace;
+      font-size: clamp(8.5px, 1.8vw, 11.5px);
+      color: #555570;
       text-decoration: none;
-      transition: all 0.3s ease;
-      font-size: clamp(9px, 2.5vw, 16px);
-      /* shrinks to fit small screens */
-      white-space: nowrap;
-    }
-
-    .nav-links a:hover {
-      opacity: 0.6;
-      color: #00f5d4;
-      border: 1px solid #00f5d4;
-      border-radius: 2px;
-    }
-
-    /* ===== CYAN DIVIDER LINE ===== */
-    .line {
-      border: 2px solid #00f5d4;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      padding: 4px 6px;
       border-radius: 3px;
+      white-space: nowrap;
+      transition: color 0.2s;
+      border: 1px solid transparent;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: #00f5d4;
+      border-color: rgba(0, 245, 212, 0.2);
+    }
+
+    /* ── PAGES ── */
+    .page {
+      display: none;
+      min-height: 100vh;
       width: 100%;
     }
 
-    /* ===== INTRO WRAPPER ===== */
-    .intro-wrapper {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin: clamp(10px, 4vw, 40px) 10px 10px 10px;
-      padding: 10px;
-      gap: clamp(6px, 2vw, 20px);
-      width: 100%;
-      /* CHANGED: never overflows screen */
-      overflow: hidden;
-      /* CHANGED: nothing bleeds outside this container */
-    }
-
-    /* ===== INTRO TEXT ===== */
-    .intro {
+    .page.active {
       display: flex;
       flex-direction: column;
-      border-left: 4px solid #00f5d4;
-      padding-left: clamp(6px, 2vw, 20px);
+    }
+
+    /* ── HOME ── */
+    #home {
+      align-items: center;
+      justify-content: center;
+      padding: 56px 5vw 0;
+      position: relative;
+      overflow: hidden;
+    }
+
+    #home::before {
+      content: '';
+      position: absolute;
+      top: -20%;
+      right: -10%;
+      width: 55vw;
+      height: 55vw;
+      background: radial-gradient(circle, rgba(0, 245, 212, 0.055) 0%, transparent 65%);
+      pointer-events: none;
+    }
+
+    .home-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: clamp(16px, 4vw, 60px);
+      width: 100%;
+      max-width: 980px;
+      margin: 0 auto;
+      padding: clamp(20px, 6vw, 60px) 0;
+    }
+
+    .home-text {
       flex: 1;
       min-width: 0;
-      /* KEY: allows text to shrink without overflowing */
-      overflow: hidden;
     }
 
-    /* ===== BIG "Hi," TEXT ===== */
-    .intro p {
+    .home-eyebrow {
+      font-family: 'DM Mono', monospace;
+      font-size: clamp(8px, 1.8vw, 11px);
       color: #00f5d4;
-      font-size: clamp(18px, 7vw, 60px);
-      /* shrinks smoothly on small screens */
-      font-weight: bolder;
-      margin: clamp(3px, 1vw, 10px);
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      margin-bottom: clamp(8px, 2vw, 14px);
+      animation: up 0.7s ease both 0.1s;
     }
 
-    /* ===== YOUR NAME ===== */
-    .name {
-      margin: clamp(3px, 1vw, 10px);
-      font-size: clamp(11px, 3vw, 22px);
-      /* shrinks smoothly */
-      font-weight: bolder;
-      color: #ffffff;
+    .home-name {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 7.5vw, 5.2rem);
+      font-weight: 700;
+      line-height: 1.04;
+      color: #fff;
+      margin-bottom: clamp(10px, 2vw, 16px);
+      animation: up 0.7s ease both 0.22s;
     }
 
-    /* ===== TAGLINE ===== */
-    .intro span {
-      color: #a0c4ff;
-      font-size: clamp(8px, 2.2vw, 15px);
-      /* shrinks smoothly */
-      margin: clamp(3px, 1vw, 10px);
-      font-weight: bolder;
+    .home-name span {
+      color: #00f5d4;
       font-style: italic;
-      line-height: 1.6;
-      display: block;
-      /* CHANGED: ensures text wraps properly inside its box */
-      word-break: break-word;
-      /* CHANGED: long words wrap instead of overflowing */
     }
 
-    /* ===== PROFILE IMAGE ===== */
-    .profile-img {
-      width: clamp(50px, 12vw, 200px);
-      /* shrinks with screen, stays on the right */
-      height: clamp(50px, 12vw, 200px);
-      object-fit: cover;
-      border-radius: 10px;
-      flex-shrink: 0;
+    .home-sub {
+      font-size: clamp(0.72rem, 2vw, 0.97rem);
+      color: #8899cc;
+      line-height: 1.7;
+      margin-bottom: clamp(18px, 3.5vw, 32px);
+      animation: up 0.7s ease both 0.34s;
+      max-width: 440px;
     }
 
-    /* ===== ABOUT ME SECTION ===== */
-    .about {
-      background-color: #0d0d1a;
-      margin: 10px;
-      margin-top: 30px;
-      padding: clamp(10px, 3vw, 20px);
-      border-left: 4px solid #00f5d4;
-      width: calc(100% - 20px);
-      /* CHANGED: stays within screen bounds */
-      overflow: hidden;
+    .home-btns {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      animation: up 0.7s ease both 0.46s;
     }
 
-    .about h2 {
-      color: #ffffff;
-      margin-bottom: 10px;
-      font-size: clamp(13px, 3vw, 22px);
-    }
-
-    .about p {
-      margin: 10px;
-      margin-bottom: 10px;
-      color: #a0c4ff;
-      line-height: 1.6;
-      font-size: clamp(10px, 2.5vw, 16px);
-      word-break: break-word;
-    }
-
-    /* ===== SKILLS SECTION ===== */
-    .skill {
-      background: url("back.png");
-      border-left: 4px solid #00f5d4;
-      padding: clamp(10px, 3vw, 20px);
-      margin: 10px;
-      margin-top: 30px;
-      width: calc(100% - 20px);
-      /* CHANGED: stays within screen bounds */
-      overflow: hidden;
-    }
-
-    .skill h1 {
-      color: #00f5d4;
-      font-size: clamp(9px, 2vw, 14px);
-      letter-spacing: clamp(1px, 1vw, 4px);
-    }
-
-    .skill ul {
-      list-style: none;
-      margin-top: 20px;
-    }
-
-    /* ===== EACH SKILL ITEM ===== */
-    .skill li {
-      padding: clamp(5px, 1.5vw, 10px) clamp(7px, 2vw, 16px);
-      border: 1px solid #1a1a2e;
-      margin-bottom: 8px;
-      color: #eaeaea;
-      font-size: clamp(10px, 2.5vw, 18px);
-      font-weight: bolder;
+    .btn-primary {
+      font-family: 'DM Mono', monospace;
+      font-size: clamp(8px, 1.7vw, 10.5px);
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: #07070f;
+      background: #00f5d4;
+      border: none;
+      padding: clamp(9px, 1.8vw, 13px) clamp(16px, 3vw, 26px);
       border-radius: 4px;
-      transition: all 0.3s ease;
+      cursor: pointer;
+      transition: opacity 0.2s;
+      text-decoration: none;
+      display: inline-block;
     }
 
-    .skill li::before {
-      content: "▹ ";
-      color: #00f5d4;
+    .btn-primary:hover {
+      opacity: 0.85;
     }
 
-    .skill li:hover {
-      border-color: #00f5d4;
+    .btn-outline {
+      font-family: 'DM Mono', monospace;
+      font-size: clamp(8px, 1.7vw, 10.5px);
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
       color: #00f5d4;
+      background: transparent;
+      border: 1px solid rgba(0, 245, 212, 0.4);
+      padding: clamp(9px, 1.8vw, 13px) clamp(16px, 3vw, 26px);
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background 0.2s;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    .btn-outline:hover {
+      background: rgba(0, 245, 212, 0.07);
+    }
+
+    /* Profile image */
+    .home-img {
+      flex-shrink: 0;
+      position: relative;
+      animation: fadeIn 0.9s ease both 0.3s;
+    }
+
+    .home-img img {
+      width: clamp(80px, 18vw, 220px);
+      height: clamp(80px, 18vw, 220px);
+      border-radius: 12px;
+      object-fit: cover;
+      display: block;
+      filter: contrast(1.05) grayscale(10%);
+      position: relative;
+      z-index: 1;
+    }
+
+    .home-img::before {
+      content: '';
+      position: absolute;
+      inset: -7px;
+      border: 1px solid rgba(0, 245, 212, 0.22);
+      border-radius: 16px;
+      z-index: 0;
+    }
+
+    .home-img::after {
+      content: '';
+      position: absolute;
+      inset: -14px;
+      border: 1px solid rgba(0, 245, 212, 0.07);
+      border-radius: 20px;
+      z-index: 0;
+    }
+
+    /* Scroll hint */
+    .scroll-hint {
+      font-family: 'DM Mono', monospace;
+      font-size: 9px;
+      color: #333350;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      text-align: center;
+      padding: 20px 0 28px;
+      animation: up 1s ease both 0.8s;
+    }
+
+    /* ── INNER PAGES ── */
+    .page-wrap {
+      flex: 1;
+      width: 100%;
+      max-width: 920px;
+      margin: 0 auto;
+      padding: clamp(76px, 12vw, 100px) 5vw clamp(40px, 6vw, 70px);
+      animation: up 0.45s ease both;
+    }
+
+    /* Section tag */
+    .stag {
+      font-family: 'DM Mono', monospace;
+      font-size: clamp(8px, 1.6vw, 10px);
+      color: #00f5d4;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 10px;
+    }
+
+    .stag::after {
+      content: '';
+      height: 1px;
+      width: 60px;
+      background: rgba(0, 245, 212, 0.18);
+    }
+
+    /* Section heading */
+    .stitle {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.5rem, 5vw, 2.8rem);
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: clamp(20px, 4vw, 36px);
+    }
+
+    .stitle em {
+      color: #00f5d4;
+      font-style: italic;
+    }
+
+    /* Divider */
+    .div-line {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(0, 245, 212, 0.2), transparent);
+      margin: clamp(18px, 3vw, 28px) 0;
+    }
+
+    /* ── ABOUT ── */
+    .about-body {
+      font-size: clamp(0.84rem, 2.1vw, 1.02rem);
+      color: #8899cc;
+      line-height: 1.88;
+      font-weight: 300;
+      max-width: 660px;
+    }
+
+    .about-body strong {
+      color: #00f5d4;
+      font-weight: 500;
+    }
+
+    /* ── SKILLS ── */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(clamp(110px, 22vw, 170px), 1fr));
+      gap: clamp(8px, 2vw, 14px);
+    }
+
+    .skill-card {
+      background: #0d0d1c;
+      border: 1px solid rgba(0, 245, 212, 0.09);
+      border-radius: 8px;
+      padding: clamp(12px, 2.5vw, 18px) clamp(12px, 2.5vw, 20px);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      transition: border-color 0.25s, transform 0.25s, background 0.25s;
       cursor: default;
     }
 
-    /* ===== PROJECTS SECTION ===== */
-    .projects {
-      background-color: #0a0a1f;
-      border-left: 4px solid #00f5d4;
-      margin: 10px;
-      padding: clamp(10px, 3vw, 20px);
-      margin-top: 40px;
-      width: calc(100% - 20px);
-      /* CHANGED: stays within screen bounds */
-      overflow: hidden;
+    .skill-card:hover {
+      border-color: #00f5d4;
+      background: rgba(0, 245, 212, 0.05);
+      transform: translateY(-3px);
     }
 
-    .projects h2 {
-      color: #00f5d4;
-      font-family: Georgia, 'Times New Roman', Times, serif;
-      margin-bottom: 10px;
-      font-size: clamp(13px, 3vw, 22px);
+    .skill-dot {
+      width: 6px;
+      height: 6px;
+      background: #00f5d4;
+      border-radius: 50%;
+      flex-shrink: 0;
     }
 
-    .projects ul {
-      margin: 10px;
-      list-style-type: none;
+    .skill-label {
+      font-family: 'DM Mono', monospace;
+      font-size: clamp(0.64rem, 1.8vw, 0.8rem);
+      color: #eee;
     }
 
-    /* ===== EACH PROJECT ITEM ===== */
-    .projects li {
-      margin: 10px 0;
-      padding: clamp(6px, 2vw, 10px);
-      border: 2px solid #00f5d4;
-      border-radius: 5px;
-      transition: all 0.3s ease;
-      font-size: clamp(10px, 2.2vw, 16px);
-      line-height: 1.5;
-      word-break: break-word;
-      /* CHANGED: text wraps instead of overflowing */
-    }
-
-    .projects li::before {
-      content: "$ ";
-      color: #00f5d4;
-    }
-
-    .projects li a {
-      color: #a0c4ff;
-      font-size: clamp(9px, 2vw, 14px);
-      word-break: break-word;
-    }
-
-    .projects li a:hover {
-      color: #ff6b6b;
-      border: 3px solid #ff6b6b;
-    }
-
-    /* ===== FOOTER ===== */
-    footer {
+    /* ── PROJECTS ── */
+    .proj-list {
       display: flex;
       flex-direction: column;
+      gap: clamp(10px, 2vw, 16px);
+    }
+
+    .proj-card {
+      background: #0d0d1c;
+      border: 1px solid rgba(0, 245, 212, 0.09);
+      border-radius: 10px;
+      padding: clamp(14px, 3vw, 24px) clamp(14px, 3vw, 24px);
+      display: flex;
       align-items: center;
-      padding: clamp(10px, 3vw, 20px);
-      margin-top: 30px;
-      text-align: center;
-      width: 100%;
-      overflow: hidden;
+      justify-content: space-between;
+      gap: clamp(10px, 2.5vw, 24px);
+      transition: border-color 0.25s, background 0.25s, transform 0.25s;
     }
 
-    footer h2 {
-      color: #a0c4ff;
-      margin-bottom: 10px;
-      font-size: clamp(11px, 2.5vw, 18px);
+    .proj-card:hover {
+      border-color: rgba(0, 245, 212, 0.32);
+      background: #111120;
+      transform: translateX(5px);
     }
 
-    footer a {
+    .proj-info {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .proj-num {
+      font-family: 'DM Mono', monospace;
+      font-size: clamp(7.5px, 1.5vw, 9.5px);
+      color: #444460;
+      letter-spacing: 0.14em;
+      margin-bottom: 4px;
+    }
+
+    .proj-name {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(0.92rem, 2.8vw, 1.22rem);
+      color: #fff;
+      margin-bottom: 4px;
+    }
+
+    .proj-desc {
+      font-size: clamp(0.7rem, 1.8vw, 0.84rem);
+      color: #8899cc;
+      line-height: 1.55;
+      font-weight: 300;
+    }
+
+    .proj-btn {
+      font-family: 'DM Mono', monospace;
+      font-size: clamp(7.5px, 1.5vw, 9.5px);
       color: #00f5d4;
       text-decoration: none;
-      word-break: break-word;
-      /* CHANGED: long email wraps instead of overflowing */
-      text-align: center;
-      font-size: clamp(9px, 2vw, 14px);
-      padding: 0 10px;
+      border: 1px solid rgba(0, 245, 212, 0.28);
+      padding: clamp(6px, 1.2vw, 9px) clamp(10px, 2vw, 16px);
+      border-radius: 4px;
+      white-space: nowrap;
+      flex-shrink: 0;
+      transition: background 0.2s, border-color 0.2s;
     }
 
-    footer a:hover {
-      color: #ff6b6b;
+    .proj-btn:hover {
+      background: rgba(0, 245, 212, 0.07);
+      border-color: #00f5d4;
+    }
+
+    .proj-btn.wip {
+      color: #3a3a55;
+      border-color: rgba(60, 60, 85, 0.4);
+      pointer-events: none;
+    }
+
+    /* ── CONTACT ── */
+    .contact-intro {
+      font-family: 'DM Mono', monospace;
+      font-size: clamp(9px, 1.8vw, 11px);
+      color: #444460;
+      letter-spacing: 0.1em;
+      margin-bottom: 20px;
+    }
+
+    .contact-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .contact-row {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      background: #0d0d1c;
+      border: 1px solid rgba(0, 245, 212, 0.09);
+      border-radius: 8px;
+      padding: clamp(13px, 2.5vw, 18px) clamp(14px, 3vw, 22px);
+      text-decoration: none;
+      transition: border-color 0.25s, background 0.25s, transform 0.25s;
+    }
+
+    .contact-row:hover {
+      border-color: #00f5d4;
+      background: rgba(0, 245, 212, 0.04);
+      transform: translateX(4px);
+    }
+
+    .contact-tag {
+      font-family: 'DM Mono', monospace;
+      font-size: clamp(8px, 1.6vw, 10px);
+      color: #00f5d4;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      flex-shrink: 0;
+      min-width: 44px;
+    }
+
+    .contact-val {
+      font-family: 'DM Mono', monospace;
+      font-size: clamp(0.62rem, 1.8vw, 0.78rem);
+      color: #8899cc;
+      word-break: break-all;
+    }
+
+    /* ── FOOTER ── */
+    .footer {
+      text-align: center;
+      padding: clamp(16px, 3vw, 24px) 5vw;
+      border-top: 1px solid rgba(0, 245, 212, 0.06);
+      font-family: 'DM Mono', monospace;
+      font-size: clamp(8px, 1.5vw, 10px);
+      color: #2e2e44;
+      letter-spacing: 0.12em;
+    }
+
+    /* ── ANIMATIONS ── */
+    @keyframes up {
+      from {
+        opacity: 0;
+        transform: translateY(18px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+
+      to {
+        opacity: 1;
+      }
     }
   </style>
 </head>
 
 <body>
 
-  <!-- NAVIGATION BAR -->
+  <!-- NAV -->
   <nav>
-    <div class="hero">Dehinbo Titus</div>
+    <div class="logo">Dehinbo Titus</div>
     <ul class="nav-links">
-      <li><a href="#">Home</a></li>
-      <li><a href="#">About</a></li>
-      <li><a href="#">Contact</a></li>
+      <li><a href="#" class="active" onclick="go('home',this);return false">Home</a></li>
+      <li><a href="#" onclick="go('about',this);return false">About</a></li>
+      <li><a href="#" onclick="go('skills',this);return false">Skills</a></li>
+      <li><a href="#" onclick="go('projects',this);return false">Projects</a></li>
+      <li><a href="#" onclick="go('contact',this);return false">Contact</a></li>
     </ul>
   </nav>
 
-  <!-- CYAN DIVIDER LINE -->
-  <div class="line"></div>
-
-  <!-- INTRO SECTION -->
-  <div class="intro-wrapper">
-    <div class="intro">
-      <p>Hi,</p>
-      <div class="name">I'm Dehinbo Titus.</div>
-      <span>I enjoy turning ideas into interactive websites and continuously improving my skills in web
-        development.</span>
+  <!-- HOME -->
+  <section class="page active" id="home">
+    <div class="home-inner">
+      <div class="home-text">
+        <div class="home-eyebrow">// Frontend Developer</div>
+        <h1 class="home-name">Dehinbo<br><span>Titus.</span></h1>
+        <p class="home-sub">I enjoy turning ideas into interactive websites and continuously improving my skills in web
+          development.</p>
+        <div class="home-btns">
+          <a class="btn-primary" href="#"
+            onclick="go('projects', document.querySelectorAll('.nav-links a')[3]); return false;">View My Work</a>
+          <a class="btn-outline" href="#"
+            onclick="go('contact', document.querySelectorAll('.nav-links a')[4]); return false;">Contact Me</a>
+        </div>
+      </div>
+      <div class="home-img">
+        <img src="remove.png" alt="Dehinbo Titus">
+      </div>
     </div>
-    <img class="profile-img" src="remove.png" alt="profile image">
-  </div>
+    <div class="scroll-hint">scroll to explore</div>
+  </section>
 
-  <!-- ABOUT ME SECTION -->
-  <section>
-    <div class="about">
-      <h2>About Me</h2>
-      <p>
-        I am a frontend developer learning how to build modern and responsive websites
-        using HTML, CSS, and JavaScript.
+  <!-- ABOUT -->
+  <section class="page" id="about">
+    <div class="page-wrap">
+      <div class="stag">01 — About</div>
+      <h2 class="stitle">Who I Am</h2>
+      <p class="about-body">
+        I am a <strong>frontend developer</strong> learning how to build modern and responsive
+        websites using <strong>HTML</strong>, <strong>CSS</strong>, and <strong>JavaScript</strong>.
+        I am passionate about clean design, good code, and creating experiences that people enjoy using.
+      </p>
+      <div class="div-line"></div>
+      <p class="about-body">
+        I started my journey building small projects and I am growing every day.
+        My goal is to become a <strong>professional frontend developer</strong> who builds
+        things that people genuinely love to use.
       </p>
     </div>
+    <div class="footer">© 2025 Dehinbo Titus</div>
   </section>
 
-  <!-- SKILLS SECTION -->
-  <section>
-    <div class="skill">
-      <h1>SKILLS ACQUIRED</h1>
-      <ul>
-        <li>HTML</li>
-        <li>CSS</li>
-        <li>A little bit of JavaScript</li>
-      </ul>
+  <!-- SKILLS -->
+  <section class="page" id="skills">
+    <div class="page-wrap">
+      <div class="stag">02 — Skills</div>
+      <h2 class="stitle">What I Know</h2>
+      <div class="skills-grid">
+        <div class="skill-card">
+          <div class="skill-dot"></div><span class="skill-label">HTML</span>
+        </div>
+        <div class="skill-card">
+          <div class="skill-dot"></div><span class="skill-label">CSS</span>
+        </div>
+        <div class="skill-card">
+          <div class="skill-dot"></div><span class="skill-label">JavaScript</span>
+        </div>
+        <div class="skill-card">
+          <div class="skill-dot"></div><span class="skill-label">Responsive Design</span>
+        </div>
+        <div class="skill-card">
+          <div class="skill-dot"></div><span class="skill-label">Git & GitHub</span>
+        </div>
+        <div class="skill-card">
+          <div class="skill-dot"></div><span class="skill-label">UI Design</span>
+        </div>
+      </div>
     </div>
+    <div class="footer">© 2025 Dehinbo Titus</div>
   </section>
 
-  <!-- PROJECTS SECTION -->
-  <section>
-    <div class="projects">
-      <h2>Projects</h2>
-      <ul>
-        <li>Rock Paper Scissors Game: A simple game built with JavaScript, HTML and CSS.
-          <a href="https://rockpaperscissorsbytt.netlify.app/">View Project</a>
-        </li>
-        <li>Music Landing Page: A modern website layout for a music platform.
-          <a href="#">still working on it</a>
-        </li>
-        <li>A minor Calculator project
-          <a href="https://titus12345-dehinbo.github.io/quick-calculator/">view project</a>
-        </li>
-      </ul>
+  <!-- PROJECTS -->
+  <section class="page" id="projects">
+    <div class="page-wrap">
+      <div class="stag">03 — Projects</div>
+      <h2 class="stitle">Things I've Built</h2>
+      <div class="proj-list">
+
+        <div class="proj-card">
+          <div class="proj-info">
+            <div class="proj-num">Project 01</div>
+            <div class="proj-name">Rock Paper Scissors</div>
+            <p class="proj-desc">A simple interactive game built with JavaScript, HTML and CSS.</p>
+          </div>
+          <a class="proj-btn" href="https://rockpaperscissorsbytt.netlify.app/" target="_blank">View →</a>
+        </div>
+
+        <div class="proj-card">
+          <div class="proj-info">
+            <div class="proj-num">Project 02</div>
+            <div class="proj-name">Music Landing Page</div>
+            <p class="proj-desc">A modern website layout for a music platform. Currently in progress.</p>
+          </div>
+          <a class="proj-btn wip">In Progress</a>
+        </div>
+
+        <div class="proj-card">
+          <div class="proj-info">
+            <div class="proj-num">Project 03</div>
+            <div class="proj-name">Quick Calculator</div>
+            <p class="proj-desc">A clean functional calculator built with HTML, CSS and JavaScript.</p>
+          </div>
+          <a class="proj-btn" href="https://titus12345-dehinbo.github.io/quick-calculator/" target="_blank">View →</a>
+        </div>
+
+      </div>
     </div>
+    <div class="footer">© 2025 Dehinbo Titus</div>
   </section>
 
-  <!-- FOOTER / CONTACT -->
-  <footer>
-    <h2>Contact Me @</h2>
-    <a href="#">Email: dehinbotitus@gmail.com | | phonenumber: 08053950665</a>
-  </footer>
+  <!-- CONTACT -->
+  <section class="page" id="contact">
+    <div class="page-wrap">
+      <div class="stag">04 — Contact</div>
+      <h2 class="stitle">Let's <em>Connect.</em></h2>
+      <p class="contact-intro">Feel free to reach out anytime.</p>
+      <div class="contact-list">
+        <a class="contact-row" href="mailto:dehinbotitus@gmail.com">
+          <span class="contact-tag">Email</span>
+          <span class="contact-val">dehinbotitus@gmail.com</span>
+        </a>
+        <a class="contact-row" href="tel:08053950665">
+          <span class="contact-tag">Phone</span>
+          <span class="contact-val">08053950665</span>
+        </a>
+      </div>
+    </div>
+    <div class="footer">© 2025 Dehinbo Titus</div>
+  </section>
+
+  <script>
+    // Switch to a page when nav is clicked
+    function go(id, link) {
+      // Hide all pages
+      document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+      // Remove active from all nav links
+      document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
+      // Show the target page
+      document.getElementById(id).classList.add('active');
+      // Highlight the nav link
+      if (link) link.classList.add('active');
+      // Scroll to top
+      window.scrollTo(0, 0);
+    }
+  </script>
 
 </body>
 
