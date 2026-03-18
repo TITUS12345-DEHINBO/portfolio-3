@@ -11,7 +11,7 @@
     rel="stylesheet">
 
   <style>
-    /* Reset all default browser styles */
+    /* Reset */
     *,
     *::before,
     *::after {
@@ -20,12 +20,11 @@
       box-sizing: border-box;
     }
 
-    /* Smooth scroll */
     html {
       scroll-behavior: smooth;
     }
 
-    /* Page background and font */
+    /* Page background */
     body {
       background: #07070f;
       font-family: 'DM Sans', sans-serif;
@@ -33,7 +32,7 @@
       overflow-x: hidden;
     }
 
-    /* Grain texture over the whole page */
+    /* Grain texture */
     body::before {
       content: '';
       position: fixed;
@@ -44,89 +43,97 @@
       z-index: 0;
     }
 
-    /* Fixed nav at the top */
+    /* ── NAV ──
+       Two rows on mobile: logo on top, links on bottom
+       One row on desktop
+    */
     nav {
       position: fixed;
       top: 0;
       left: 0;
       right: 0;
       z-index: 999;
-      height: 56px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0 5vw;
-      background: rgba(7, 7, 15, 0.96);
+      background: rgba(7, 7, 15, 0.97);
       backdrop-filter: blur(16px);
       border-bottom: 1px solid rgba(0, 245, 212, 0.07);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 8px 4vw 6px;
+      gap: 6px;
     }
 
-    /* Name badge in the nav */
+    /* Name badge */
     .logo {
       font-family: 'DM Mono', monospace;
-      font-size: clamp(9px, 2.2vw, 13px);
+      font-size: clamp(9px, 2.5vw, 13px);
       color: #00f5d4;
       letter-spacing: 0.14em;
       text-transform: uppercase;
       border: 1px solid rgba(0, 245, 212, 0.28);
-      padding: 4px 10px;
+      padding: 3px 10px;
       border-radius: 4px;
       white-space: nowrap;
     }
 
-    /* Nav links row */
+    /* Nav links always in one row, centered */
     .nav-links {
       list-style: none;
       display: flex;
       align-items: center;
-      gap: clamp(2px, 1.5vw, 18px);
+      justify-content: center;
+      flex-wrap: nowrap;
+      gap: 0;
+      width: 100%;
     }
 
     /* Each nav link */
     .nav-links a {
       font-family: 'DM Mono', monospace;
-      font-size: clamp(8.5px, 1.8vw, 11.5px);
+      font-size: clamp(8px, 2.2vw, 11px);
       color: #555570;
       text-decoration: none;
       text-transform: uppercase;
-      letter-spacing: 0.1em;
-      padding: 4px 6px;
+      letter-spacing: 0.06em;
+      padding: 4px 5px;
       border-radius: 3px;
       white-space: nowrap;
       transition: color 0.2s;
       border: 1px solid transparent;
+      display: block;
     }
 
-    /* Nav link on hover and when active */
+    /* Active and hovered nav link */
     .nav-links a:hover,
     .nav-links a.active {
       color: #00f5d4;
       border-color: rgba(0, 245, 212, 0.2);
     }
 
-    /* All pages hidden by default */
+    /* All pages hidden */
     .page {
       display: none;
       min-height: 100vh;
       width: 100%;
     }
 
-    /* Active page is shown */
+    /* Active page shown */
     .page.active {
       display: flex;
       flex-direction: column;
     }
 
-    /* Home page centers content vertically */
+    /* ── HOME ── */
     #home {
       align-items: center;
       justify-content: center;
-      padding: 56px 5vw 0;
+      /* top padding accounts for two-row nav height */
+      padding: 90px 5vw 20px;
       position: relative;
       overflow: hidden;
     }
 
-    /* Glow effect top right on home */
+    /* Glow top right */
     #home::before {
       content: '';
       position: absolute;
@@ -134,70 +141,71 @@
       right: -10%;
       width: 55vw;
       height: 55vw;
-      background: radial-gradient(circle, rgba(0, 245, 212, 0.055) 0%, transparent 65%);
+      background: radial-gradient(circle, rgba(0, 245, 212, 0.05) 0%, transparent 65%);
       pointer-events: none;
     }
 
-    /* Text and image side by side */
+    /* Text and image side by side — NEVER stacks */
     .home-inner {
       display: flex;
+      flex-direction: row;
       align-items: center;
       justify-content: space-between;
-      gap: clamp(16px, 4vw, 60px);
+      gap: clamp(12px, 3vw, 60px);
       width: 100%;
       max-width: 980px;
       margin: 0 auto;
-      padding: clamp(20px, 6vw, 60px) 0;
+      padding: clamp(10px, 4vw, 50px) 0;
     }
 
-    /* Text takes remaining space */
+    /* Text side */
     .home-text {
       flex: 1;
       min-width: 0;
     }
 
-    /* Small label above the name */
+    /* Small label */
     .home-eyebrow {
       font-family: 'DM Mono', monospace;
-      font-size: clamp(8px, 1.8vw, 11px);
+      font-size: clamp(7.5px, 1.8vw, 11px);
       color: #00f5d4;
-      letter-spacing: 0.24em;
+      letter-spacing: 0.2em;
       text-transform: uppercase;
-      margin-bottom: clamp(8px, 2vw, 14px);
+      margin-bottom: clamp(6px, 1.5vw, 14px);
       animation: up 0.7s ease both 0.1s;
     }
 
-    /* Big name heading */
+    /* Big name */
     .home-name {
       font-family: 'Playfair Display', serif;
-      font-size: clamp(2rem, 7.5vw, 5.2rem);
+      font-size: clamp(1.7rem, 6.5vw, 5rem);
       font-weight: 700;
       line-height: 1.04;
       color: #fff;
-      margin-bottom: clamp(10px, 2vw, 16px);
+      margin-bottom: clamp(8px, 1.5vw, 16px);
       animation: up 0.7s ease both 0.22s;
+      word-break: break-word;
     }
 
-    /* Cyan italic part of the name */
+    /* Cyan italic name */
     .home-name span {
       color: #00f5d4;
       font-style: italic;
     }
 
-    /* Short description */
+    /* Tagline */
     .home-sub {
-      font-size: clamp(0.72rem, 2vw, 0.97rem);
+      font-size: clamp(0.68rem, 1.8vw, 0.95rem);
       color: #8899cc;
       line-height: 1.7;
-      margin-bottom: clamp(18px, 3.5vw, 32px);
+      margin-bottom: clamp(16px, 3vw, 30px);
       animation: up 0.7s ease both 0.34s;
-      max-width: 440px;
     }
 
     /* Button row */
     .home-btns {
       display: flex;
-      gap: 10px;
+      gap: 8px;
       flex-wrap: wrap;
       animation: up 0.7s ease both 0.46s;
     }
@@ -205,13 +213,13 @@
     /* Filled button */
     .btn-primary {
       font-family: 'DM Mono', monospace;
-      font-size: clamp(8px, 1.7vw, 10.5px);
-      letter-spacing: 0.16em;
+      font-size: clamp(7.5px, 1.6vw, 10.5px);
+      letter-spacing: 0.14em;
       text-transform: uppercase;
       color: #07070f;
       background: #00f5d4;
       border: none;
-      padding: clamp(9px, 1.8vw, 13px) clamp(16px, 3vw, 26px);
+      padding: clamp(8px, 1.5vw, 13px) clamp(14px, 2.5vw, 24px);
       border-radius: 4px;
       cursor: pointer;
       transition: opacity 0.2s;
@@ -226,13 +234,13 @@
     /* Outlined button */
     .btn-outline {
       font-family: 'DM Mono', monospace;
-      font-size: clamp(8px, 1.7vw, 10.5px);
-      letter-spacing: 0.16em;
+      font-size: clamp(7.5px, 1.6vw, 10.5px);
+      letter-spacing: 0.14em;
       text-transform: uppercase;
       color: #00f5d4;
       background: transparent;
       border: 1px solid rgba(0, 245, 212, 0.4);
-      padding: clamp(9px, 1.8vw, 13px) clamp(16px, 3vw, 26px);
+      padding: clamp(8px, 1.5vw, 13px) clamp(14px, 2.5vw, 24px);
       border-radius: 4px;
       cursor: pointer;
       transition: background 0.2s;
@@ -244,7 +252,7 @@
       background: rgba(0, 245, 212, 0.07);
     }
 
-    /* Profile image stays on the right */
+    /* Image stays right, never drops */
     .home-img {
       flex-shrink: 0;
       position: relative;
@@ -253,8 +261,8 @@
 
     /* Profile photo */
     .home-img img {
-      width: clamp(80px, 18vw, 220px);
-      height: clamp(80px, 18vw, 220px);
+      width: clamp(72px, 17vw, 210px);
+      height: clamp(72px, 17vw, 210px);
       border-radius: 12px;
       object-fit: cover;
       display: block;
@@ -263,119 +271,120 @@
       z-index: 1;
     }
 
-    /* First ring around photo */
+    /* First ring */
     .home-img::before {
       content: '';
       position: absolute;
-      inset: -7px;
+      inset: -6px;
       border: 1px solid rgba(0, 245, 212, 0.22);
-      border-radius: 16px;
+      border-radius: 15px;
       z-index: 0;
     }
 
-    /* Second ring around photo */
+    /* Second ring */
     .home-img::after {
       content: '';
       position: absolute;
-      inset: -14px;
+      inset: -12px;
       border: 1px solid rgba(0, 245, 212, 0.07);
-      border-radius: 20px;
+      border-radius: 18px;
       z-index: 0;
     }
 
-    /* Scroll hint text at the bottom of home */
+    /* Scroll hint */
     .scroll-hint {
       font-family: 'DM Mono', monospace;
       font-size: 9px;
-      color: #333350;
+      color: #2e2e44;
       letter-spacing: 0.2em;
       text-transform: uppercase;
       text-align: center;
-      padding: 20px 0 28px;
+      padding: 16px 0 20px;
       animation: up 1s ease both 0.8s;
     }
 
-    /* Inner content wrapper for all pages except home */
+    /* ── INNER PAGES ── */
     .page-wrap {
       flex: 1;
       width: 100%;
       max-width: 920px;
       margin: 0 auto;
-      padding: clamp(76px, 12vw, 100px) 5vw clamp(40px, 6vw, 70px);
-      animation: up 0.45s ease both;
+      /* top padding accounts for two-row nav */
+      padding: clamp(90px, 14vw, 110px) 5vw clamp(36px, 6vw, 60px);
+      animation: up 0.4s ease both;
     }
 
-    /* Small label above section title */
+    /* Section small tag */
     .stag {
       font-family: 'DM Mono', monospace;
       font-size: clamp(8px, 1.6vw, 10px);
       color: #00f5d4;
-      letter-spacing: 0.28em;
+      letter-spacing: 0.26em;
       text-transform: uppercase;
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 10px;
       margin-bottom: 10px;
     }
 
-    /* Short line after the tag */
+    /* Line after tag */
     .stag::after {
       content: '';
       height: 1px;
-      width: 60px;
+      width: 55px;
       background: rgba(0, 245, 212, 0.18);
     }
 
     /* Section heading */
     .stitle {
       font-family: 'Playfair Display', serif;
-      font-size: clamp(1.5rem, 5vw, 2.8rem);
+      font-size: clamp(1.4rem, 5vw, 2.7rem);
       font-weight: 700;
       color: #fff;
-      margin-bottom: clamp(20px, 4vw, 36px);
+      margin-bottom: clamp(18px, 4vw, 34px);
     }
 
-    /* Cyan italic used inside headings */
+    /* Cyan italic in heading */
     .stitle em {
       color: #00f5d4;
       font-style: italic;
     }
 
-    /* Thin glowing divider line */
+    /* Divider line */
     .div-line {
       height: 1px;
       background: linear-gradient(90deg, transparent, rgba(0, 245, 212, 0.2), transparent);
-      margin: clamp(18px, 3vw, 28px) 0;
+      margin: clamp(16px, 3vw, 26px) 0;
     }
 
-    /* About paragraph text */
+    /* About text */
     .about-body {
-      font-size: clamp(0.84rem, 2.1vw, 1.02rem);
+      font-size: clamp(0.82rem, 2vw, 1rem);
       color: #8899cc;
       line-height: 1.88;
       font-weight: 300;
       max-width: 660px;
     }
 
-    /* Highlighted word in about text */
+    /* Highlighted word */
     .about-body strong {
       color: #00f5d4;
       font-weight: 500;
     }
 
-    /* Skills responsive grid */
+    /* Skills grid */
     .skills-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(clamp(110px, 22vw, 170px), 1fr));
-      gap: clamp(8px, 2vw, 14px);
+      grid-template-columns: repeat(auto-fill, minmax(clamp(100px, 20vw, 165px), 1fr));
+      gap: clamp(8px, 2vw, 13px);
     }
 
-    /* Each skill box */
+    /* Skill card */
     .skill-card {
       background: #0d0d1c;
       border: 1px solid rgba(0, 245, 212, 0.09);
       border-radius: 8px;
-      padding: clamp(12px, 2.5vw, 18px) clamp(12px, 2.5vw, 20px);
+      padding: clamp(11px, 2.2vw, 17px) clamp(11px, 2.2vw, 18px);
       display: flex;
       align-items: center;
       gap: 10px;
@@ -383,14 +392,13 @@
       cursor: default;
     }
 
-    /* Skill card lifts on hover */
     .skill-card:hover {
       border-color: #00f5d4;
       background: rgba(0, 245, 212, 0.05);
       transform: translateY(-3px);
     }
 
-    /* Cyan dot inside skill card */
+    /* Cyan dot */
     .skill-dot {
       width: 6px;
       height: 6px;
@@ -402,38 +410,37 @@
     /* Skill name */
     .skill-label {
       font-family: 'DM Mono', monospace;
-      font-size: clamp(0.64rem, 1.8vw, 0.8rem);
+      font-size: clamp(0.62rem, 1.7vw, 0.78rem);
       color: #eee;
     }
 
-    /* Projects stacked in a column */
+    /* Projects column */
     .proj-list {
       display: flex;
       flex-direction: column;
-      gap: clamp(10px, 2vw, 16px);
+      gap: clamp(9px, 2vw, 14px);
     }
 
-    /* Each project row */
+    /* Project card */
     .proj-card {
       background: #0d0d1c;
       border: 1px solid rgba(0, 245, 212, 0.09);
       border-radius: 10px;
-      padding: clamp(14px, 3vw, 24px);
+      padding: clamp(13px, 2.5vw, 22px);
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: clamp(10px, 2.5vw, 24px);
+      gap: clamp(10px, 2vw, 22px);
       transition: border-color 0.25s, background 0.25s, transform 0.25s;
     }
 
-    /* Project card slides right on hover */
     .proj-card:hover {
       border-color: rgba(0, 245, 212, 0.32);
       background: #111120;
-      transform: translateX(5px);
+      transform: translateX(4px);
     }
 
-    /* Project text takes remaining space */
+    /* Text side */
     .proj-info {
       flex: 1;
       min-width: 0;
@@ -442,36 +449,36 @@
     /* Project number */
     .proj-num {
       font-family: 'DM Mono', monospace;
-      font-size: clamp(7.5px, 1.5vw, 9.5px);
+      font-size: clamp(7px, 1.4vw, 9px);
       color: #444460;
-      letter-spacing: 0.14em;
+      letter-spacing: 0.13em;
       margin-bottom: 4px;
     }
 
-    /* Project title */
+    /* Project name */
     .proj-name {
       font-family: 'Playfair Display', serif;
-      font-size: clamp(0.92rem, 2.8vw, 1.22rem);
+      font-size: clamp(0.9rem, 2.6vw, 1.2rem);
       color: #fff;
       margin-bottom: 4px;
     }
 
     /* Project description */
     .proj-desc {
-      font-size: clamp(0.7rem, 1.8vw, 0.84rem);
+      font-size: clamp(0.68rem, 1.7vw, 0.82rem);
       color: #8899cc;
       line-height: 1.55;
       font-weight: 300;
     }
 
-    /* View project button */
+    /* View button */
     .proj-btn {
       font-family: 'DM Mono', monospace;
-      font-size: clamp(7.5px, 1.5vw, 9.5px);
+      font-size: clamp(7px, 1.4vw, 9.5px);
       color: #00f5d4;
       text-decoration: none;
       border: 1px solid rgba(0, 245, 212, 0.28);
-      padding: clamp(6px, 1.2vw, 9px) clamp(10px, 2vw, 16px);
+      padding: clamp(5px, 1.1vw, 8px) clamp(9px, 1.8vw, 14px);
       border-radius: 4px;
       white-space: nowrap;
       flex-shrink: 0;
@@ -483,84 +490,83 @@
       border-color: #00f5d4;
     }
 
-    /* Disabled button for work in progress */
+    /* Disabled wip button */
     .proj-btn.wip {
       color: #3a3a55;
       border-color: rgba(60, 60, 85, 0.4);
       pointer-events: none;
     }
 
-    /* Contact intro text */
+    /* Contact intro */
     .contact-intro {
       font-family: 'DM Mono', monospace;
-      font-size: clamp(9px, 1.8vw, 11px);
+      font-size: clamp(8.5px, 1.7vw, 11px);
       color: #444460;
       letter-spacing: 0.1em;
-      margin-bottom: 20px;
+      margin-bottom: 18px;
     }
 
-    /* Contact cards stacked */
+    /* Contact cards */
     .contact-list {
       display: flex;
       flex-direction: column;
       gap: 10px;
     }
 
-    /* Each contact card */
+    /* Contact card */
     .contact-row {
       display: flex;
       align-items: center;
-      gap: 16px;
+      gap: 14px;
       background: #0d0d1c;
       border: 1px solid rgba(0, 245, 212, 0.09);
       border-radius: 8px;
-      padding: clamp(13px, 2.5vw, 18px) clamp(14px, 3vw, 22px);
+      padding: clamp(12px, 2.2vw, 17px) clamp(13px, 2.5vw, 20px);
       text-decoration: none;
       transition: border-color 0.25s, background 0.25s, transform 0.25s;
     }
 
-    /* Contact card slides on hover */
     .contact-row:hover {
       border-color: #00f5d4;
       background: rgba(0, 245, 212, 0.04);
       transform: translateX(4px);
     }
 
-    /* Label like Email or Phone */
+    /* Email / Phone label */
     .contact-tag {
       font-family: 'DM Mono', monospace;
-      font-size: clamp(8px, 1.6vw, 10px);
+      font-size: clamp(7.5px, 1.5vw, 10px);
       color: #00f5d4;
       text-transform: uppercase;
-      letter-spacing: 0.12em;
+      letter-spacing: 0.1em;
       flex-shrink: 0;
-      min-width: 44px;
+      min-width: 42px;
     }
 
-    /* Contact value like email address */
+    /* Contact value */
     .contact-val {
       font-family: 'DM Mono', monospace;
-      font-size: clamp(0.62rem, 1.8vw, 0.78rem);
+      font-size: clamp(0.6rem, 1.7vw, 0.76rem);
       color: #8899cc;
       word-break: break-all;
     }
 
-    /* Footer copyright text */
+    /* Footer */
     .footer {
       text-align: center;
-      padding: clamp(16px, 3vw, 24px) 5vw;
+      padding: clamp(14px, 2.5vw, 22px) 5vw;
       border-top: 1px solid rgba(0, 245, 212, 0.06);
       font-family: 'DM Mono', monospace;
-      font-size: clamp(8px, 1.5vw, 10px);
+      font-size: clamp(7.5px, 1.4vw, 10px);
       color: #2e2e44;
       letter-spacing: 0.12em;
     }
 
-    /* Slide up fade animation */
+    /* Animations */
     @keyframes up {
       from {
         opacity: 0;
-        transform: translateY(18px);
+        transform: translateY(16px);
       }
 
       to {
@@ -569,7 +575,6 @@
       }
     }
 
-    /* Simple fade in animation */
     @keyframes fadeIn {
       from {
         opacity: 0;
@@ -579,12 +584,32 @@
         opacity: 1;
       }
     }
+
+    /* ── DESKTOP: nav goes back to one row ── */
+    @media (min-width: 700px) {
+      nav {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        height: 56px;
+        padding: 0 5vw;
+        gap: 0;
+      }
+
+      #home {
+        padding: 76px 5vw 20px;
+      }
+
+      .page-wrap {
+        padding: clamp(76px, 10vw, 100px) 5vw clamp(36px, 6vw, 60px);
+      }
+    }
   </style>
 </head>
 
 <body>
 
-  <!-- Nav bar -->
+  <!-- Nav -->
   <nav>
     <div class="logo">Dehinbo Titus</div>
     <ul class="nav-links">
@@ -596,11 +621,11 @@
     </ul>
   </nav>
 
-  <!-- Home page -->
+  <!-- Home -->
   <section class="page active" id="home">
     <div class="home-inner">
 
-      <!-- Left side text -->
+      <!-- Text left -->
       <div class="home-text">
         <div class="home-eyebrow">// Frontend Developer</div>
         <h1 class="home-name">Dehinbo<br><span>Titus.</span></h1>
@@ -614,17 +639,16 @@
         </div>
       </div>
 
-      <!-- Right side image -->
+      <!-- Image right -->
       <div class="home-img">
         <img src="remove.png" alt="Dehinbo Titus">
       </div>
 
     </div>
-    <!-- Scroll hint at the bottom -->
     <div class="scroll-hint">scroll to explore</div>
   </section>
 
-  <!-- About page -->
+  <!-- About -->
   <section class="page" id="about">
     <div class="page-wrap">
       <div class="stag">01 — About</div>
@@ -644,7 +668,7 @@
     <div class="footer">© 2025 Dehinbo Titus</div>
   </section>
 
-  <!-- Skills page -->
+  <!-- Skills -->
   <section class="page" id="skills">
     <div class="page-wrap">
       <div class="stag">02 — Skills</div>
@@ -673,7 +697,7 @@
     <div class="footer">© 2025 Dehinbo Titus</div>
   </section>
 
-  <!-- Projects page -->
+  <!-- Projects -->
   <section class="page" id="projects">
     <div class="page-wrap">
       <div class="stag">03 — Projects</div>
@@ -712,43 +736,33 @@
     <div class="footer">© 2025 Dehinbo Titus</div>
   </section>
 
-  <!-- Contact page -->
+  <!-- Contact -->
   <section class="page" id="contact">
     <div class="page-wrap">
       <div class="stag">04 — Contact</div>
       <h2 class="stitle">Let's <em>Connect.</em></h2>
       <p class="contact-intro">Feel free to reach out anytime.</p>
       <div class="contact-list">
-
-        <!-- Email card -->
         <a class="contact-row" href="mailto:dehinbotitus@gmail.com">
           <span class="contact-tag">Email</span>
           <span class="contact-val">dehinbotitus@gmail.com</span>
         </a>
-
-        <!-- Phone card -->
         <a class="contact-row" href="tel:08053950665">
           <span class="contact-tag">Phone</span>
           <span class="contact-val">08053950665</span>
         </a>
-
       </div>
     </div>
     <div class="footer">© 2025 Dehinbo Titus</div>
   </section>
 
   <script>
-    // Switch pages when a nav link is clicked
+    // Switch pages when nav is clicked
     function go(id, link) {
-      // Hide all pages
       document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-      // Remove active from all nav links
       document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
-      // Show selected page
       document.getElementById(id).classList.add('active');
-      // Highlight clicked nav link
       if (link) link.classList.add('active');
-      // Scroll to top
       window.scrollTo(0, 0);
     }
   </script>
